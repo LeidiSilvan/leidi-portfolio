@@ -4,25 +4,45 @@
 
 <h1 class="text-center font-bold text-4xl">Leidi Silvan</h1>
 <h2 class="text-center">Desarrolladora FullStack</h2>
-<img
-  src="./picture.webp"
-  alt="Portfolio Image"
-  class="w-40 h-40 object-cover rounded-full"
-/>
+<section class="flex justify-center w-full mt-4">
+  <img
+    src="./picture.webp"
+    alt="Portfolio Image"
+    class="w-40 h-40 object-cover rounded-full"
+  />
+</section>
+<section class="flex justify-center w-full mt-4">
+  <a href="/leidi_elvira_lopez_silvan.pdf" download> Mi CV </a>
 
-<a
-  href="/leidi_elvira_lopez_silvan.pdf"
-  class="mt-4 inline-block rounded bg-indigo-400 px-4 py-2 text-white"
-  download
->
-  Mi CV
-</a>
+  <a id="link-github" href="https://github.com/LeidiSilvan" target="_blank"
+    >GitHub</a
+  >
+  <a
+    id="link-linkedin"
+    href="https://www.linkedin.com/in/leidisilvan/"
+    target="_blank">LinkedIn</a
+  >
+  <a id="link-correo" href="mailto:silvanleidi@gmail.com" target="_blank"
+    >Correo</a
+  >
+</section>
 
 <style>
-  h1 {
-    text-align: center;
+  img {
+    display: flex;
+    justify-content: end;
   }
-  h2 {
-    text-align: center;
+
+  h1 {
+    padding: 3%;
+  }
+
+  a {
+    margin: 0 10px;
+    color: #fff;
+    background-color: #4f46e5;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
   }
 </style>
