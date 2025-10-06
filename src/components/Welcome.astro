@@ -1,5 +1,19 @@
 ---
-
+import cvIcon from "./imagenesIcons/cv.svg";
+import htmlIcon from "./imagenesIcons/HTML.svg";
+import cssIcon from "./imagenesIcons/CSS.svg";
+import jsIcon from "./imagenesIcons/JS.svg";
+import javaGif from "./imagenesIcons/java.gif";
+import gitIcon from "./imagenesIcons/git.svg";
+import githubIcon from "./imagenesIcons/github.svg";
+import astroIcon from "./imagenesIcons/astro.png";
+import bootsIcon from "./imagenesIcons/boots.svg";
+import sqlIcon from "./imagenesIcons/sql.png";
+import ideaIcon from "./imagenesIcons/idea.svg";
+import vscIcon from "./imagenesIcons/vsc.svg";
+import postmanIcon from "./imagenesIcons/postman.svg";
+import scrumIcon from "./imagenesIcons/scrum.png";
+// project images not present in repo; use existing asset as fallback
 ---
 
 <section class="relative w-full h-64">
@@ -25,12 +39,7 @@
         aria-label="Ver CV"
         class="cv-svg-link"
       >
-        <img
-          width="40"
-          height="40"
-          src="/src/components/imagenesIcons/cv.svg"
-          alt="Ver CV"
-        />
+        <img width="40" height="40" src={cvIcon.src} alt="Ver CV" />
       </a>
 
       <a
@@ -92,7 +101,7 @@
     </div>
     <div class="absolute left-1/2 -bottom-30 transform -translate-x-1/2 z-10">
       <img
-        src="./picture.webp"
+        src="/picture.webp"
         alt="Portfolio Image"
         class="w-40 h-40 object-cover rounded-full border-7 border-white shadow-lg bg-white"
       />
@@ -114,79 +123,67 @@
 
     <div class="skills-grid" role="list">
       <div class="skill-card" role="listitem">
-        <img src="./src/components/imagenesIcons/HTML.svg" alt="HTML5" />
+        <img src={htmlIcon.src} alt="HTML5" />
         <span>HTML</span>
       </div>
 
       <div class="skill-card" role="listitem">
-        <img src="./src/components/imagenesIcons/CSS.svg" alt="CSS3" />
+        <img src={cssIcon.src} alt="CSS3" />
         <span>CSS</span>
       </div>
 
       <div class="skill-card" role="listitem">
-        <img src="./src/components/imagenesIcons/JS.svg" alt="JavaScript" />
+        <img src={jsIcon.src} alt="JavaScript" />
         <span>JavaScript</span>
       </div>
 
       <div class="skill-card" role="listitem">
-        <img src="./src/components/imagenesIcons/java.gif" alt="Java" />
+        <img src={javaGif.src} alt="Java" />
         <span>Java</span>
       </div>
 
       <div class="skill-card" role="listitem">
-        <img src="./src/components/imagenesIcons/git.svg" alt="Git" />
+        <img src={gitIcon.src} alt="Git" />
         <span>Git</span>
       </div>
 
       <div class="skill-card" role="listitem">
-        <img
-          src="./src/components/imagenesIcons/github.svg"
-          alt="Git / GitHub"
-        />
+        <img src={githubIcon.src} alt="Git / GitHub" />
         <span>GitHub</span>
       </div>
 
       <div class="skill-card" role="listitem">
-        <img src="./src/components/imagenesIcons/astro.png" alt="Astro" />
+        <img src={astroIcon.src} alt="Astro" />
         <span>Astro</span>
       </div>
 
       <div class="skill-card" role="listitem">
-        <img src="./src/components/imagenesIcons/boots.svg" alt="Bootstrap" />
+        <img src={bootsIcon.src} alt="Bootstrap" />
         <span>Bootstrap</span>
       </div>
 
       <div class="skill-card" role="listitem">
-        <img src="./src/components/imagenesIcons/sql.png" alt="SQL" />
+        <img src={sqlIcon.src} alt="SQL" />
         <span>SQL</span>
       </div>
 
       <div class="skill-card" role="listitem">
-        <img
-          src="./src/components/imagenesIcons/idea.svg"
-          alt="IntelliJ IDEA"
-        />
+        <img src={ideaIcon.src} alt="IntelliJ IDEA" />
         <span>IntelliJ IDEA</span>
       </div>
 
       <div class="skill-card" role="listitem">
-        <img
-          src="./src/components/imagenesIcons/vsc.svg"
-          alt="Visual Studio Code"
-        />
+        <img src={vscIcon.src} alt="Visual Studio Code" />
         <span>Visual Studio Code</span>
       </div>
 
       <div class="skill-card" role="listitem">
-        <img src="./src/components/imagenesIcons/postman.svg" alt="Postman" />
+        <img src={postmanIcon.src} alt="Postman" />
         <span>Postman</span>
       </div>
 
       <div class="skill-card" role="listitem">
-        <img
-          src="./src/components/imagenesIcons/scrum.png"
-          alt="Metodología Scrum"
-        />
+        <img src={scrumIcon.src} alt="Metodología Scrum" />
         <span>Metodología Scrum</span>
       </div>
     </div>
@@ -290,11 +287,7 @@
 
     <div class="projects-grid" role="list">
       <article class="project-card" role="listitem">
-        <img
-          src="/src/components/imagenesIcons/project1.png"
-          alt="Proyecto 1"
-          class="project-img"
-        />
+        <img src={astroIcon.src} alt="Proyecto 1" class="project-img" />
         <h4 class="project-title">Proyecto 1</h4>
         <p class="project-desc">
           Breve descripción del Proyecto 1. Tecnologías: HTML, CSS, JS.
@@ -314,11 +307,7 @@
       </article>
 
       <article class="project-card" role="listitem">
-        <img
-          src="/src/components/imagenesIcons/project2.png"
-          alt="Proyecto 2"
-          class="project-img"
-        />
+        <img src={astroIcon.src} alt="Proyecto 2" class="project-img" />
         <h4 class="project-title">Proyecto 2</h4>
         <p class="project-desc">
           Breve descripción del Proyecto 2. Backend y API REST.
@@ -338,11 +327,7 @@
       </article>
 
       <article class="project-card" role="listitem">
-        <img
-          src="/src/components/imagenesIcons/project3.png"
-          alt="Proyecto 3"
-          class="project-img"
-        />
+        <img src={astroIcon.src} alt="Proyecto 3" class="project-img" />
         <h4 class="project-title">Proyecto 3</h4>
         <p class="project-desc">
           Breve descripción del Proyecto 3. SPA con framework moderno.
