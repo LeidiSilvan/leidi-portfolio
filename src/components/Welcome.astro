@@ -3,6 +3,8 @@
 ---
 
 <section class="relative w-full h-64">
+  <!-- restaurado h-64 -->
+  <!-- eliminado h-64 para evitar espacio fijo -->
   <img
     class="w-full h-full object-cover"
     src="https://p2.piqsels.com/preview/624/200/891/code-computer-technology-html.jpg"
@@ -120,6 +122,7 @@
       </a>
     </div>
     <div class="absolute left-1/2 -bottom-30 transform -translate-x-1/2 z-10">
+      <!-- restaurada la clase original -->
       <img
         src="./picture.webp"
         alt="Portfolio Image"
@@ -136,32 +139,171 @@
       rendimiento, accesibilidad y escalabilidad.
     </p>
   </section>
-</section>
 
-<style>
-  .cv-svg-link svg,
-  .github-svg-link svg,
-  .linkedin-svg-link svg,
-  .correo-svg-link svg {
-    transition:
-      transform 0.2s,
-      box-shadow 0.2s,
-      background 0.2s,
-      fill 0.2s;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.12);
-    padding: 6px;
-    fill: #fff;
-  }
-  .cv-svg-link:hover svg,
-  .github-svg-link:hover svg,
-  .linkedin-svg-link:hover svg,
-  .correo-svg-link:hover svg {
-    transform: scale(1.18) translateY(-4px) rotate(-8deg);
-    box-shadow: 0 8px 24px rgba(220, 38, 38, 0.25);
-    background: #fff;
-    fill: #dc2626;
-    cursor: pointer;
-  }
-</style>
+  <!-- HABILIDADES TÉCNICAS -->
+  <section class="skills-section flex flex-col items-center py-12 w-full">
+    <h3 class="text-2xl font-bold mb-6">Habilidades técnicas en:</h3>
+
+    <div class="skills-grid" role="list">
+      <div class="skill-card" role="listitem">
+        <img src="./src/components/imagenesIcons/HTML.svg" alt="HTML5" />
+        <span>HTML</span>
+      </div>
+
+      <div class="skill-card" role="listitem">
+        <img src="./src/components/imagenesIcons/CSS.svg" alt="CSS3" />
+        <span>CSS</span>
+      </div>
+
+      <div class="skill-card" role="listitem">
+        <img src="./src/components/imagenesIcons/JS.svg" alt="JavaScript" />
+        <span>JavaScript</span>
+      </div>
+
+      <div class="skill-card" role="listitem">
+        <img src="./src/components/imagenesIcons/java.gif" alt="Java" />
+        <span>Java</span>
+      </div>
+
+      <div class="skill-card" role="listitem">
+        <img src="./src/components/imagenesIcons/git.svg" alt="Git" />
+        <span>Git</span>
+      </div>
+
+      <div class="skill-card" role="listitem">
+        <img
+          src="./src/components/imagenesIcons/github.svg"
+          alt="Git / GitHub"
+        />
+        <span>GitHub</span>
+      </div>
+
+      <div class="skill-card" role="listitem">
+        <img src="./src/components/imagenesIcons/astro.png" alt="Astro" />
+        <span>Astro</span>
+      </div>
+
+      <div class="skill-card" role="listitem">
+        <img src="./src/components/imagenesIcons/boots.svg" alt="Bootstrap" />
+        <span>Bootstrap</span>
+      </div>
+
+      <div class="skill-card" role="listitem">
+        <img src="./src/components/imagenesIcons/sql.png" alt="SQL" />
+        <span>SQL</span>
+      </div>
+
+      <div class="skill-card" role="listitem">
+        <img
+          src="./src/components/imagenesIcons/idea.svg"
+          alt="IntelliJ IDEA"
+        />
+        <span>IntelliJ IDEA</span>
+      </div>
+
+      <div class="skill-card" role="listitem">
+        <img
+          src="./src/components/imagenesIcons/vsc.svg"
+          alt="Visual Studio Code"
+        />
+        <span>Visual Studio Code</span>
+      </div>
+
+      <div class="skill-card" role="listitem">
+        <img src="./src/components/imagenesIcons/postman.svg" alt="Postman" />
+        <span>Postman</span>
+      </div>
+
+      <div class="skill-card" role="listitem">
+        <img
+          src="./src/components/imagenesIcons/scrum.png"
+          alt="Metodología Scrum"
+        />
+        <span>Metodología Scrum</span>
+      </div>
+    </div>
+
+    <style>
+      .cv-svg-link svg,
+      .github-svg-link svg,
+      .linkedin-svg-link svg,
+      .correo-svg-link svg {
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s,
+          background 0.2s,
+          fill 0.2s;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(124, 58, 237, 0.12);
+        padding: 6px;
+        fill: #fff;
+      }
+      .cv-svg-link:hover svg,
+      .github-svg-link:hover svg,
+      .linkedin-svg-link:hover svg,
+      .correo-svg-link:hover svg {
+        transform: scale(1.18) translateY(-4px) rotate(-8deg);
+        box-shadow: 0 8px 24px rgba(220, 38, 38, 0.25);
+        background: #fff;
+        fill: #dc2626;
+        cursor: pointer;
+      }
+
+      /* Estilos para Habilidades Técnicas */
+      .skills-section {
+        background: transparent;
+        padding-bottom: 48px;
+      }
+      .skills-grid {
+        width: 100%;
+        max-width: 1100px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 18px;
+        padding: 0 20px;
+      }
+      .skill-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 14px;
+        box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+        transition:
+          transform 200ms ease,
+          box-shadow 200ms ease;
+      }
+      .skill-card img {
+        width: 56px;
+        height: 56px;
+        object-fit: contain;
+        margin-bottom: 8px;
+      }
+      .skill-card span {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #0f172a;
+        text-align: center;
+      }
+      .skill-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+        cursor: pointer;
+      }
+      @media (max-width: 640px) {
+        .skills-grid {
+          gap: 12px;
+        }
+        .skill-card img {
+          width: 48px;
+          height: 48px;
+        }
+      }
+    </style>
+  </section>
+</section>
+}
+
