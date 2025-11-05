@@ -18,14 +18,13 @@ import reactIcon from "./imagenesIcons/REAC-.png";
 ---
 
 <section class="hero-section relative w-full min-h-screen">
-  <!-- restaurado h-64 -->
-  <!-- eliminado h-64 para evitar espacio fijo -->
+
   <div class="absolute inset-0 flex items-center justify-center">
     <!-- Grid: left (title + icons), center (avatar), right (about) -->
   <div class="hero-grid w-full px-6">
   <div class="hero-left text-gray-900 flex flex-col items-start justify-center">
-        <h1 class="text-6xl font-black mb-4">LEIDI ELVIRA LOPEZ SILVAN</h1>
-        <h2 class="text-2xl font-light mb-6">DESARROLLADORA FULLSTACK</h2>
+  <h1 class="text-4xl font-black mb-4">LEIDI ELVIRA LOPEZ SILVAN</h1>
+    <h2 class="text-2xl font-light mb-6 flex flex-col items-center justify-center">DESARROLLADORA FULLSTACK</h2>
         <div class="social-row flex items-center gap-4">
           <a
             href="/cv-leidi-elvira-lopez-silvan.PDF"
@@ -132,7 +131,9 @@ import reactIcon from "./imagenesIcons/REAC-.png";
   .hero-left{ padding:2rem 0; text-align:left; align-self:center; justify-self:stretch; }
   .hero-right{ padding:2rem 0; text-align:left; align-self:center; justify-self:stretch; }
   /* move the main heading down more so sticky nav doesn't overlap it */
-  .hero-left h1{ margin-top: 4rem; }
+  .hero-left h1{ margin-top: 4rem; text-align: center; justify-self: center; width:100%; }
+  /* also center the subtitle under the main heading */
+  .hero-left h2{ text-align: center; justify-self: center; width:100%; }
   @media (max-width: 640px){ .hero-left h1{ margin-top: 6rem; } }
     .hero-center .avatar-wrap{ display:flex; align-items:center; justify-content:center; }
   /* show the avatar as the raw photo (no circular frame) */
