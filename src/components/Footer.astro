@@ -1,0 +1,23 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="copy">© Leidi Silvan 2025 </p>
+    <nav class="footer-nav" aria-label="Enlaces de pie de página">
+      <a href="https://github.com/LeidiSilvan" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/leidi-silvan" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="/contactame">Contacto</a>
+    </nav>
+  </div>
+
+  <style>
+    .site-footer{ background: linear-gradient(180deg,#ffffff, #fbfbfc); border-top: 1px solid rgba(15,23,42,0.04); padding: 28px 16px; margin-top: 48px; }
+    .footer-inner{ max-width:1200px; margin:0 auto; display:flex; gap:20px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+    .site-footer .copy{ color:#334155; margin:0; font-weight:600; }
+    .footer-nav{ display:flex; gap:12px; align-items:center; }
+    .footer-nav a{ text-decoration:none; color:#0f172a; background:#fff; padding:8px 12px; border-radius:10px; box-shadow:0 4px 12px rgba(2,6,23,0.06); font-weight:700; }
+    @media (max-width:640px){ .footer-inner{ flex-direction:column; gap:10px; text-align:center; } }
+  </style>
+</footer>
