@@ -1,0 +1,127 @@
+---
+import Layout from "../layouts/Layout.astro";
+import htmlIcon from "../components/imagenesIcons/HTML.svg";
+import cssIcon from "../components/imagenesIcons/CSS.svg";
+import jsIcon from "../components/imagenesIcons/JS.svg";
+import javaGif from "../components/imagenesIcons/java.gif";
+import gitIcon from "../components/imagenesIcons/git.svg";
+import githubIcon from "../components/imagenesIcons/github.svg";
+import astroIcon from "../components/imagenesIcons/astro.png";
+import bootsIcon from "../components/imagenesIcons/boots.svg";
+import sqlIcon from "../components/imagenesIcons/sql.png";
+import ideaIcon from "../components/imagenesIcons/idea.svg";
+import vscIcon from "../components/imagenesIcons/vsc.svg";
+import postmanIcon from "../components/imagenesIcons/postman.svg";
+import scrumIcon from "../components/imagenesIcons/scrum.png";
+import reactIcon from "../components/imagenesIcons/REAC-.png";
+---
+
+<Layout>
+  <main class="py-12 flex flex-col items-center w-full">
+    <h1 class="text-3xl font-bold mb-6">Tecnologías</h1>
+
+    <section class="skills-section flex flex-col items-center py-6 w-full">
+      <h3 class="text-2xl font-bold mb-6">Habilidades técnicas en:</h3>
+
+      <div class="skills-grid" role="list">
+        <div class="skill-card" role="listitem">
+          <img src={htmlIcon.src} alt="HTML5" />
+          <span>HTML</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={cssIcon.src} alt="CSS3" />
+          <span>CSS</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={jsIcon.src} alt="JavaScript" />
+          <span>JavaScript</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={javaGif.src} alt="Java" />
+          <span>Java</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={gitIcon.src} alt="Git" />
+          <span>Git</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={githubIcon.src} alt="Git / GitHub" />
+          <span>GitHub</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={astroIcon.src} alt="Astro" />
+          <span>Astro</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={reactIcon.src} alt="React" />
+          <span>React</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={bootsIcon.src} alt="Bootstrap" />
+          <span>Bootstrap</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={sqlIcon.src} alt="SQL" />
+          <span>SQL</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={ideaIcon.src} alt="IntelliJ IDEA" />
+          <span>IntelliJ IDEA</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={vscIcon.src} alt="Visual Studio Code" />
+          <span>Visual Studio Code</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={postmanIcon.src} alt="Postman" />
+          <span>Postman</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={scrumIcon.src} alt="Metodología Scrum" />
+          <span>Metodología Scrum</span>
+        </div>
+      </div>
+
+      <style>
+        .skills-section { background: transparent; padding-bottom: 48px; }
+        .skills-grid {
+          width: 100%;
+          max-width: 1100px;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+          gap: 18px;
+          padding: 0 20px;
+        }
+        .skill-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: #ffffff;
+          border-radius: 12px;
+          padding: 14px;
+          box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+          transition: transform 200ms ease, box-shadow 200ms ease;
+        }
+  .skill-card img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px; }
+  .skill-card span { font-size: 1rem; font-weight: 700; color: #0f172a; text-align: center; }
+  .skill-card:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12); cursor: pointer; }
+  @media (max-width: 1024px) { .skill-card img { width: 64px; height: 64px; } }
+  @media (max-width: 640px) { .skills-grid { gap: 12px; } .skill-card img { width: 56px; height: 56px; } }
+      </style>
+    </section>
+  </main>
+</Layout>

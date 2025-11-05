@@ -1,0 +1,129 @@
+---
+---
+
+<nav class="site-nav">
+  <div class="nav-inner max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="nav-left flex items-center gap-3">
+      <a href="/" class="nav-link brand-text">Leidi Silvan</a>
+    </div>
+
+    <div class="nav-right flex gap-4 items-center">
+      <a href="/tecnologias" class="nav-link">Tecnologías</a>
+      <a href="/cursos" class="nav-link">Cursos</a>
+      <a href="/proyectos" class="nav-link">Proyectos</a>
+      <a href="/contactame" class="nav-link">Contáctame</a>
+    </div>
+
+    <!-- botón para móviles -->
+    <div class="md:hidden">
+      <button aria-label="Abrir navegación" aria-expanded="false" id="nav-toggle" class="nav-toggle">☰</button>
+    </div>
+  </div>
+
+  <!-- menú móvil oculto por defecto -->
+  <div id="mobile-menu" class="mobile-menu hidden">
+    <a href="/tecnologias" class="mobile-link">Tecnologías</a>
+    <a href="/cursos" class="mobile-link">Cursos</a>
+    <a href="/proyectos" class="mobile-link">Proyectos</a>
+    <a href="/contactame" class="mobile-link">Contáctame</a>
+  </div>
+
+  <style>
+  :root{ --nav-bg-1: #071029; --nav-bg-2: #0b1220; --nav-text: #ffffff }
+  .site-nav{ position: sticky; top: 0; z-index:60; background: linear-gradient(90deg,var(--nav-bg-1),var(--nav-bg-2)); box-shadow: 0 8px 30px rgba(2,6,23,0.6); }
+    .nav-inner{ display:flex; align-items:center; justify-content:space-between; }
+  .brand-text{ color: white; font-weight:800; font-size:1.15rem; letter-spacing:0.2px; padding:6px 10px; border-radius:999px; background: rgba(255,255,255,0.03); }
+
+  /* show desktop links by default; hide on small screens (mobile) */
+  .nav-right{ display:flex; }
+  .nav-link{ color: white; text-decoration:none; font-weight:600; padding:8px 12px; border-radius:999px; transition: all 160ms ease; background: rgba(255,255,255,0.04); }
+  .nav-link:hover{ transform: translateY(-3px); background: rgba(255,255,255,0.08); box-shadow: 0 10px 30px rgba(2,6,23,0.5); }
+
+    /* mobile menu */
+  .mobile-menu{ display:flex; flex-direction:column; gap:8px; padding:12px 16px; background: linear-gradient(180deg, rgba(7,16,41,0.92), rgba(11,18,32,0.96)); border-top: 1px solid rgba(255,255,255,0.04); }
+  /* utility hidden class used by the toggle script */
+  .hidden { display: none !important; }
+  .mobile-link{ color: white; text-decoration:none; padding:10px 12px; border-radius:8px; background: rgba(255,255,255,0.04); font-weight:700 }
+
+  .nav-toggle{ background: rgba(255,255,255,0.06); color: white; border: none; padding:8px 10px; border-radius:8px; font-size:1.1rem; cursor:pointer }
+
+  /* active link styles: underline centered below the link text */
+  :root { --nav-accent: #ffffff; }
+  .nav-link, .mobile-link { position: relative; }
+  .nav-link.active, .mobile-link.active {
+    background: transparent !important;
+    color: var(--nav-accent);
+    box-shadow: none;
+    transform: none;
+  }
+  .nav-link.active::after, .mobile-link.active::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -6px;
+    width: 40%;
+    height: 3px;
+    background: var(--nav-accent);
+    border-radius: 2px;
+  }
+
+  /* For small screens hide desktop links; mobile menu is toggled via the .hidden utility */
+  @media (max-width: 767px) {
+    .nav-right{ display: none; }
+  }
+
+  /* On desktop hide the mobile menu container to avoid duplicates */
+  @media (min-width: 768px) {
+    .mobile-menu{ display: none !important; }
+  }
+  </style>
+
+  <script>
+    (function(){
+      const btn = document.getElementById('nav-toggle');
+      const menu = document.getElementById('mobile-menu');
+      if(btn && menu){
+        btn.addEventListener('click', ()=>{
+          menu.classList.toggle('hidden');
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+        });
+      }
+
+      // mark active links in desktop and mobile nav
+      const locationPath = (p => { if(!p) return '/'; return p.endsWith('/') && p.length>1 ? p.slice(0,-1) : p; })(window.location.pathname);
+      const desktopLinks = /** @type {NodeListOf<HTMLAnchorElement>} */ (document.querySelectorAll('.nav-right a.nav-link'));
+      desktopLinks.forEach((link) => {
+        try{
+          const href = link.getAttribute('href');
+          if(!href) return;
+          const url = new URL(href, window.location.origin);
+          let lp = url.pathname;
+          lp = lp.endsWith('/') && lp.length>1 ? lp.slice(0,-1) : lp;
+          if(lp === locationPath || (lp !== '/' && locationPath.startsWith(lp))){
+            const el = /** @type {HTMLElement} */ (link);
+            el.classList.add('active');
+            el.setAttribute('aria-current', 'page');
+          }
+        }catch(e){ }
+      });
+
+      const mobileLinks = /** @type {NodeListOf<HTMLAnchorElement>} */ (document.querySelectorAll('#mobile-menu a.mobile-link'));
+      mobileLinks.forEach((link) => {
+        try{
+          const href = link.getAttribute('href');
+          if(!href) return;
+          const url = new URL(href, window.location.origin);
+          let lp = url.pathname;
+          lp = lp.endsWith('/') && lp.length>1 ? lp.slice(0,-1) : lp;
+          if(lp === locationPath || (lp !== '/' && locationPath.startsWith(lp))){
+            const el = /** @type {HTMLElement} */ (link);
+            el.classList.add('active');
+            el.setAttribute('aria-current', 'page');
+          }
+        }catch(e){ }
+      });
+    })();
+  </script>
+</nav>
