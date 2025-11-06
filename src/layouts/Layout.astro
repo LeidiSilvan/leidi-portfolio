@@ -9,11 +9,11 @@ import Footer from "../components/Footer.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://cdn-icons-png.flaticon.com/512/1208/1208833.png"
-    />
+    <!-- local favicon (SVG) placed in public/ -->
+  <!-- use local favicon.svg placed in public/; add query param to bust cache after update -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+    <!-- fallback for older browsers -->
+    <link rel="alternate icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>Leidi Silvan</title>
   </head>

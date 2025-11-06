@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <section class="page container ">
+    <div class="inner max-w-4xl mx-auto px-6 py-16 ">
+      <h1 class="title">Cursos</h1>
+      <p class="lead">Aquí verás una lista de cursos y certificaciones que he completado.</p>
+
+      <ul class="courses-list">
+        <li class="course-card">
+          <div class="course-left">
+            <strong class="course-title">Lógica de programación</strong>
+            <div class="course-provider">Capacítate para el empleo</div>
+          </div>
+          <div class="course-right">
+            <span class="date-badge">Julio 2025</span>
+            <a class="cred-link" href="https://aprende.org/verifica/61e873d7-ce74-4813-9b84-d789cc91a935/cedc819b-3a5b-450b-b87f-2070aac66393/" target="_blank" rel="noopener noreferrer">Ver credencial</a>
+          </div>
+        </li>
+
+        <li class="course-card">
+          <div class="course-left">
+            <strong class="course-title">Introducción a Java</strong>
+            <div class="course-provider">Accenture</div>
+          </div>
+          <div class="course-right">
+            <span class="date-badge">Agosto 2025</span>
+            <span class="no-cred">—</span>
+          </div>
+        </li>
+
+        <li class="course-card">
+          <div class="course-left">
+            <strong class="course-title">Java: Explora el lenguaje desde cero</strong>
+            <div class="course-provider">DevTalles</div>
+          </div>
+          <div class="course-right">
+            <span class="date-badge">Octubre 2025</span>
+            <a class="cred-link" href="https://cursos.devtalles.com/certificates/aoz4sxssj3" target="_blank" rel="noopener noreferrer">Ver credencial</a>
+          </div>
+        </li>
+
+        <li class="course-card">
+          <div class="course-left">
+            <strong class="course-title">JavaScript Moderno: Guía para dominar el lenguaje</strong>
+            <div class="course-provider">DevTalles</div>
+          </div>
+          <div class="course-right">
+            <span class="date-badge">Octubre 2025</span>
+            <a class="cred-link" href="https://cursos.devtalles.com/certificates/p3kh3i9b4y" target="_blank" rel="noopener noreferrer">Ver credencial</a>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+  <style>
+    .page{ color:var(--text-color,#111827); }
+  .title{ font-size:2rem; margin-bottom:0.5rem; font-weight:800; text-align:center }
+  .lead{ font-size:1.05rem; color:#374151; margin-bottom:1.25rem; text-align:center }
+    .courses-list{ list-style:none; padding:0; display:flex; flex-direction:column; gap:14px }
+    .course-card{ display:flex; align-items:center; justify-content:space-between; gap:12px }
+    .courses-list li{ background:#fff; border-radius:10px; padding:14px 18px; box-shadow:0 6px 20px rgba(2,6,23,0.06) }
+    .course-title{ display:block; font-size:1.05rem }
+    .course-provider{ color:#6b7280; font-size:0.95rem; margin-top:6px }
+    .course-actions, .course-right{ display:flex; align-items:center; gap:10px }
+    .date-badge{ background: rgba(15,23,42,0.06); padding:6px 8px; border-radius:8px; font-weight:700; color:#374151 }
+    .cred-link{ display:inline-block; padding:8px 12px; background: linear-gradient(90deg,#7c3aed,#ec4899); color:#fff; border-radius:8px; text-decoration:none; font-weight:700; box-shadow: 0 6px 18px rgba(124,58,237,0.18); transition: transform 160ms ease, box-shadow 160ms ease }
+    .cred-link:hover{ transform: translateY(-3px); box-shadow: 0 14px 30px rgba(124,58,237,0.22) }
+    .no-cred{ color:#9ca3af; font-weight:600 }
+
+    @media (prefers-color-scheme: dark){
+      .page{ color:#e6e6e6 }
+      .courses-list li{ background: #0b1220; box-shadow: 0 6px 20px rgba(2,6,23,0.5) }
+      .lead{ color:#c7cad0 }
+      .course-provider{ color:#9aa0a6 }
+      .date-badge{ background: rgba(255,255,255,0.03); color:#d1d5db }
+    }
+  </style>
+</Layout>
