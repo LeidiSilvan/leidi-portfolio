@@ -87,6 +87,116 @@ import Layout from '../layouts/Layout.astro';
 				<a class="btn-primary btn-view inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium" href="/cv-leidi-elvira-lopez-silvan.pdf" target="_blank" rel="noopener noreferrer">Visualiza mi CV</a>
 				<a class="btn-primary btn-download inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium" href="/cv-leidi-elvira-lopez-silvan.pdf" download>Descarga mi CV</a>
 			</div>
+
+			<!-- Formulario simple: envía directamente a tu correo vía FormSubmit (sin backend) -->
+			<div class="w-full max-w-2xl mt-10">
+				<form id="contact-native-form" action="https://formsubmit.co/silvanleidi@gmail.com" method="POST" class="space-y-4 bg-white p-6 rounded-lg shadow-md form-card">
+					<!-- Opciones de FormSubmit: desactivar captcha y asunto por defecto -->
+					<input type="hidden" name="_captcha" value="false" />
+					<input type="hidden" name="_subject" value="Nuevo mensaje desde tu portfolio" />
+				
+					<div>
+						<label for="name" class="block font-medium form-label">Nombre <span class="text-red-600">*</span></label>
+						<input id="name" name="name" type="text" required class="form-input" placeholder="Tu nombre" />
+					</div>
+
+					<div>
+						<label for="email" class="block font-medium form-label">Email <span class="text-red-600">*</span></label>
+						<!-- usamos _replyto para que el correo venga como Reply-To -->
+						<input id="email" name="_replyto" type="email" required class="form-input" placeholder="tu@correo.com" />
+					</div>
+
+					<div>
+						<label for="subject" class="block font-medium form-label">Asunto <span class="text-red-600">*</span></label>
+						<input id="subject" name="subject" type="text" required class="form-input" placeholder="¿Sobre qué quieres escribirme?" />
+					</div>
+
+					<div>
+						<label for="message" class="block font-medium form-label">Mensaje <span class="text-red-600">*</span></label>
+						<textarea id="message" name="message" rows="6" required class="form-textarea" placeholder="Cuéntame tu propuesta, duda o comentario..."></textarea>
+					</div>
+
+					<div class="flex items-center gap-3">
+						<button type="submit" id="contact-submit" class="date-badge px-5 py-2 rounded-lg">Enviar correo</button>
+					</div>
+
+					<div id="contact-success" class="hidden mt-4 p-4 rounded bg-green-50 text-green-800">Mensaje enviado. Gracias por contactarme.</div>
+					<div id="contact-error" class="hidden mt-4 p-4 rounded bg-red-50 text-red-800">Error al enviar. Por favor intenta de nuevo.</div>
+				</form>
+			</div>
+
+			<script>
+				// @ts-nocheck
+				(function(){
+					const form = document.getElementById('contact-native-form');
+					const submitBtn = document.getElementById('contact-submit');
+					const successBox = document.getElementById('contact-success');
+					const errorBox = document.getElementById('contact-error');
+					const ENDPOINT = form ? form.action : 'https://formsubmit.co/silvanleidi@gmail.com';
+
+					if(!form) return;
+
+					form.addEventListener('submit', async function(e){
+						e.preventDefault();
+						if(submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Enviando...'; }
+						if(successBox) successBox.classList.add('hidden');
+						if(errorBox) errorBox.classList.add('hidden');
+
+						const fd = new FormData(form);
+						// basic client validation
+						const name = (fd.get('name')||'').toString().trim();
+						const replyto = (fd.get('_replyto')||'').toString().trim();
+						const subject = (fd.get('subject')||'').toString().trim();
+						const message = (fd.get('message')||'').toString().trim();
+						const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+						if(!name || !replyto || !subject || !message || !emailRegex.test(replyto)){
+							if(errorBox){ errorBox.textContent = 'Completa los campos obligatorios con información válida.'; errorBox.classList.remove('hidden'); }
+							if(submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Enviar correo'; }
+							return;
+						}
+
+						try{
+							const res = await fetch(ENDPOINT, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
+							if(res.ok){
+								// success without redirect
+								if(successBox){ successBox.classList.remove('hidden'); }
+								form.reset();
+								if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar correo'; }
+								return;
+							} else {
+								// server returned non-2xx
+								let data = null;
+								try{ data = await res.json(); }catch(_){ }
+								if(errorBox){ errorBox.textContent = 'Error al enviar: ' + (data && data.message ? data.message : res.statusText); errorBox.classList.remove('hidden'); }
+							}
+						} catch(err){
+							// fetch may fail due to CORS — fallback: submit into hidden iframe so page doesn't redirect
+							console.warn('Fetch failed, using iframe fallback', err);
+							try{
+								let iframe = document.getElementById('formsubmit-iframe');
+								if(!iframe){
+									iframe = document.createElement('iframe');
+									iframe.style.display = 'none';
+									iframe.name = 'formsubmit-iframe';
+									iframe.id = 'formsubmit-iframe';
+									document.body.appendChild(iframe);
+								}
+								form.target = 'formsubmit-iframe';
+								form.submit();
+								// show success immediately to the user
+								if(successBox){ successBox.classList.remove('hidden'); }
+								form.reset();
+								if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar correo'; }
+								return;
+							}catch(submitErr){
+								if(errorBox){ errorBox.textContent = 'Error al enviar (fallback): ' + (submitErr && submitErr.message ? submitErr.message : submitErr); errorBox.classList.remove('hidden'); }
+							}
+						} finally {
+							if(submitBtn && !submitBtn.disabled){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar correo'; }
+						}
+					});
+				})();
+			</script>
 		</div>
 	</section>
 </Layout>
@@ -105,6 +215,19 @@ import Layout from '../layouts/Layout.astro';
 .contact-item > div{ text-align:left; }
 .value{ color: #0f172a; text-decoration:none; }
 .value:hover{ color:#4f46e5; }
+
+/* Reuse the 'date-badge' visual style from cursos for the submit button */
+.date-badge{
+	background: rgba(15,23,42,0.06);
+	padding: 6px 12px;
+	border-radius: 8px;
+	font-weight: 700;
+	color: #374151;
+	border: none;
+	cursor: pointer;
+	transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.date-badge:hover{ transform: translateY(-3px); box-shadow: 0 8px 20px rgba(2,6,23,0.06); }
 
 
 .icon{ cursor: pointer; }
@@ -146,5 +269,18 @@ import Layout from '../layouts/Layout.astro';
 	.icon svg{ width:28px; height:28px; }
 	.contact-card{ padding:1rem; }
 }
+
+/* Form styles (nicer look while keeping existing submit button) */
+.form-card{ background: linear-gradient(180deg,#ffffff,#fbfdff); border-radius:12px; padding:1.1rem; border:1px solid rgba(15,23,42,0.04); box-shadow: 0 12px 36px rgba(2,6,23,0.06); }
+.form-label{ color:#0f172a; font-weight:700; margin-bottom:0.35rem; }
+.form-input, .form-textarea{ width:100%; padding:0.7rem 0.9rem; border-radius:10px; border:1px solid #e6e8eb; font-size:0.96rem; transition: box-shadow 140ms ease, border-color 140ms ease, transform 120ms ease; }
+.form-input::placeholder, .form-textarea::placeholder{ color:#9ca3af }
+.form-input:focus, .form-textarea:focus{ outline:none; border-color:#7c3aed; box-shadow:0 10px 30px rgba(124,58,237,0.06); transform: translateY(-1px); }
+.form-textarea{ min-height:140px; resize:vertical }
+.form-help{ font-size:0.9rem; color:#6b7280; }
+.form-row{ display:flex; gap:12px; }
+.form-row .form-input{ flex:1 }
+.form-success{ display:flex; align-items:center; gap:8px; padding:0.9rem; border-radius:8px; background:#ecfdf5; color:#065f46 }
+.form-error{ display:flex; align-items:center; gap:8px; padding:0.9rem; border-radius:8px; background:#fff1f2; color:#7f1d1d }
 </style>
 
