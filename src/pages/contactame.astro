@@ -14,9 +14,9 @@ import Layout from '../layouts/Layout.astro';
 <br>
 		
 				<ul class="contact-list grid gap-4 md:gap-6">
-					<!-- Email -->
+					<!-- Email: icon-only clickable -->
 					<li class="contact-item flex items-center gap-4">
-						<span class="icon icon-email" aria-hidden="true">
+						<a class="icon icon-email" href="mailto:silvanleidi@gmail.com" aria-label="Enviar correo a Leidi Silvan">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 								<path d="M3 9l9 6l9 -6l-9 -6l-9 6" />
@@ -24,25 +24,30 @@ import Layout from '../layouts/Layout.astro';
 								<path d="M3 19l6 -6" />
 								<path d="M15 13l6 6" />
 							</svg>
-						</span>
+						</a>
 						<div>
 							<div class="label text-lg text-gray-500"> <strong>Correo</strong></div>
-							<a class="value text-gray-900 font-medium" href="mailto:silvanleidi@gmail.com">silvanleidi@gmail.com</a>
 						</div>
 					</li>
 
-					<!-- Phone -->
+					<!-- Phone: icon clickable -> open WhatsApp or call -->
 					<li class="contact-item flex items-center gap-4">
-						<span class="icon icon-phone" aria-hidden="true">
+						<a
+							class="icon icon-phone"
+							href="https://wa.me/529934447629"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="Enviar mensaje por WhatsApp o llamar"
+							title="Abrir WhatsApp (Aceptar) o llamar (Cancelar)"
+							onclick="(function(e){e.preventDefault(); if(confirm('¿Quieres abrir WhatsApp para enviar un mensaje? Pulsa Aceptar para WhatsApp, o Cancelar para llamar.')){ window.open('https://wa.me/529934447629','_blank'); } else { window.location.href='tel:+529934447629'; } })(event)">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 								<path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
 								<path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
 							</svg>
-						</span>
+						</a>
 						<div>
 							<div class="label text-lg text-gray-500"> <strong>Teléfono</strong></div>
-							<a class="value text-gray-900 font-medium" href="tel:+529934447629">+52 9934447629</a>
 						</div>
 					</li>
 
@@ -94,8 +99,8 @@ import Layout from '../layouts/Layout.astro';
 /* list / icon style like attachment: circle + label to right */
 .contact-list{ list-style:none; margin:0; padding:0; width:100%; }
 .contact-item{ padding:0.5rem 0; justify-content:center; }
-.icon{ display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:999px; flex-shrink:0; background:#ffffff; box-shadow: 0 6px 18px rgba(2,6,23,0.06); border:1px solid rgba(15,23,42,0.04); }
-.icon svg{ display:block; width:36px; height:36px; stroke:currentColor; fill:none; }
+.icon{ display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:999px; flex-shrink:0; background:#ffffff; box-shadow: 0 6px 18px rgba(2,6,23,0.06); border:1px solid rgba(15,23,42,0.04); position:relative; transition: transform 200ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms ease, background 200ms ease; }
+.icon svg{ display:block; width:36px; height:36px; stroke:currentColor; fill:none; transition: transform 160ms ease, color 160ms ease; }
 .label{ margin-bottom:2px; }
 .contact-item > div{ text-align:left; }
 .value{ color: #0f172a; text-decoration:none; }
@@ -104,6 +109,11 @@ import Layout from '../layouts/Layout.astro';
 /* make icons clearly clickable */
 .icon{ cursor: pointer; }
 .icon:focus{ outline: none; box-shadow: 0 0 0 4px rgba(79,70,229,0.12); }
+
+/* hover / interaction */
+.icon:hover{ transform: translateY(-6px) scale(1.06); box-shadow: 0 24px 60px rgba(79,70,229,0.14); }
+.icon:active{ transform: translateY(-2px) scale(0.98); }
+.icon:hover svg{ transform: translateY(-2px); color: #4f46e5; }
 
 /* Restore colored symbols with white circular background */
 .icon-email svg{ color: #000000; }
