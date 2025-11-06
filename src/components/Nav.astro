@@ -20,13 +20,13 @@
     </div>
   </div>
 
-  <!-- menú móvil oculto por defecto -->
+  <!-- menu -->
   <div id="mobile-menu" class="mobile-menu hidden">
     <a href="/tecnologias" class="mobile-link">Tecnologías</a>
-    <a href="/cursos" class="mobile-link">Cursos</a>
+    <a href="/cursos" class="mobile-link">Educación</a>
     <a href="/proyectos" class="mobile-link">Proyectos</a>
     <a href="/contactame" class="mobile-link">Contáctame</a>
-  </div>
+  </div>s
 
   <style>
   :root{ --nav-bg-1: #2b2636; --nav-bg-2: #733876; --nav-text: #ffffff }
@@ -34,20 +34,20 @@
     .nav-inner{ display:flex; align-items:center; justify-content:space-between; }
   .brand-text{ color: white; font-weight:800; font-size:1.15rem; letter-spacing:0.2px; padding:6px 10px; border-radius:999px; background: rgba(255,255,255,0.03); }
 
-  /* show desktop links by default; hide on small screens (mobile) */
+ 
   .nav-right{ display:flex; }
   .nav-link{ color: white; text-decoration:none; font-weight:600; padding:8px 12px; border-radius:999px; transition: all 160ms ease; background: rgba(255,255,255,0.04); }
   .nav-link:hover{ transform: translateY(-3px); background: rgba(255,255,255,0.08); box-shadow: 0 10px 30px rgba(2,6,23,0.5); }
 
-    /* mobile menu */
+
   .mobile-menu{ display:flex; flex-direction:column; gap:8px; padding:12px 16px; background: linear-gradient(180deg, rgba(7,16,41,0.92), rgba(11,18,32,0.96)); border-top: 1px solid rgba(255,255,255,0.04); }
-  /* utility hidden class used by the toggle script */
+  
   .hidden { display: none !important; }
   .mobile-link{ color: white; text-decoration:none; padding:10px 12px; border-radius:8px; background: rgba(255,255,255,0.04); font-weight:700 }
 
   .nav-toggle{ background: rgba(255,255,255,0.06); color: white; border: none; padding:8px 10px; border-radius:8px; font-size:1.1rem; cursor:pointer }
 
-  /* active link styles: underline centered below the link text */
+ 
   :root { --nav-accent: #ffffff; }
   .nav-link, .mobile-link { position: relative; }
   .nav-link.active, .mobile-link.active {
@@ -68,12 +68,12 @@
     border-radius: 2px;
   }
 
-  /* For small screens hide desktop links; mobile menu is toggled via the .hidden utility */
+  
   @media (max-width: 767px) {
     .nav-right{ display: none; }
   }
 
-  /* On desktop hide the mobile menu container to avoid duplicates */
+
   @media (min-width: 768px) {
     .mobile-menu{ display: none !important; }
   }
@@ -91,7 +91,7 @@
         });
       }
 
-      // mark active links in desktop and mobile nav
+   
       const locationPath = (p => { if(!p) return '/'; return p.endsWith('/') && p.length>1 ? p.slice(0,-1) : p; })(window.location.pathname);
       const desktopLinks = /** @type {NodeListOf<HTMLAnchorElement>} */ (document.querySelectorAll('.nav-right a.nav-link'));
       desktopLinks.forEach((link) => {

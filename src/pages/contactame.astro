@@ -6,7 +6,7 @@ import Layout from '../layouts/Layout.astro';
 <Layout>
 	<section class="contact-page max-w-4xl mx-auto px-6 py-20 text-gray-900 flex flex-col items-center">
 		<header class="mb-8 text-center">
-			<h1 class="text-3xl font-bold flex flex-col items-center">Contáctame</h1>
+			<h1 class="text-5xl font-bold flex flex-col items-center">Contáctame</h1>
             <br>
 			<p class="text-gray-600  mt-4">Escríbeme si tienes una propuesta, una duda o quieres colaborar.</p>
 		</header>
@@ -14,7 +14,7 @@ import Layout from '../layouts/Layout.astro';
 <br>
 		
 				<ul class="contact-list grid gap-4 md:gap-6">
-					<!-- Email: icon-only clickable -->
+					<!-- Email: -->
 					<li class="contact-item flex items-center gap-4">
 						<a class="icon icon-email" href="mailto:silvanleidi@gmail.com" aria-label="Enviar correo a Leidi Silvan">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -30,7 +30,7 @@ import Layout from '../layouts/Layout.astro';
 						</div>
 					</li>
 
-					<!-- Phone: icon clickable -> open WhatsApp or call -->
+					<!-- Phone:  -->
 					<li class="contact-item flex items-center gap-4">
 						<a
 							class="icon icon-phone"
@@ -96,7 +96,7 @@ import Layout from '../layouts/Layout.astro';
 .contact-page{ font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
 .contact-card{ border: 1px solid rgba(15,23,42,0.04); display:flex; flex-direction:column; align-items:center; text-align:center; }
 
-/* list / icon style like attachment: circle + label to right */
+
 .contact-list{ list-style:none; margin:0; padding:0; width:100%; }
 .contact-item{ padding:0.5rem 0; justify-content:center; }
 .icon{ display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:999px; flex-shrink:0; background:#ffffff; box-shadow: 0 6px 18px rgba(2,6,23,0.06); border:1px solid rgba(15,23,42,0.04); position:relative; transition: transform 200ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms ease, background 200ms ease; }
@@ -106,16 +106,16 @@ import Layout from '../layouts/Layout.astro';
 .value{ color: #0f172a; text-decoration:none; }
 .value:hover{ color:#4f46e5; }
 
-/* make icons clearly clickable */
+
 .icon{ cursor: pointer; }
 .icon:focus{ outline: none; box-shadow: 0 0 0 4px rgba(79,70,229,0.12); }
 
-/* hover / interaction */
+/* hover */
 .icon:hover{ transform: translateY(-6px) scale(1.06); box-shadow: 0 24px 60px rgba(79,70,229,0.14); }
 .icon:active{ transform: translateY(-2px) scale(0.98); }
 .icon:hover svg{ transform: translateY(-2px); color: #4f46e5; }
 
-/* Restore colored symbols with white circular background */
+
 .icon-email svg{ color: #000000; }
 .icon-phone svg{ color: #000000; }
 .icon-linkedin svg{ color: #000000; }
@@ -138,8 +138,8 @@ import Layout from '../layouts/Layout.astro';
 }
 .btn-primary:hover{ transform: translateY(-4px) scale(1.02); box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2); background-position:100% 50%; }
 .btn-primary:focus{ outline:none; box-shadow: 0 0 0 4px rgba(79,70,229,0.12); }
-.btn-view{ /* possible alternate style - keep same primary look but slightly lighter */ }
-.btn-download{ /* keep for semantics; style inherited from .btn-primary */ }
+.btn-view{  }
+.btn-download{  }
 
 @media (max-width: 640px){
 	.icon{ width:44px; height:44px; }

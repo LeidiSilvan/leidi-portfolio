@@ -2,13 +2,13 @@
 import cvIcon from "./imagenesIcons/cv.svg";
 import ubiIcon from "./imagenesIcons/ubi.svg";
 
-// project images not present in repo; use existing asset as fallback
+
 ---
 
 <section class="hero-section relative w-full min-h-screen">
 
   <div class="absolute inset-0 flex items-center justify-center">
-    <!-- Grid: left (title + icons), center (avatar), right (about) -->
+    <!-- Grid -->
   <div class="hero-grid w-full px-6">
   <div class="hero-left text-gray-900 flex flex-col items-start justify-center">
   <h1 class="text-4xl font-black mb-4">LEIDI ELVIRA LOPEZ SILVAN</h1>
@@ -30,7 +30,7 @@ import ubiIcon from "./imagenesIcons/ubi.svg";
             aria-label="GitHub"
             class="github-svg-link"
           >
-            <!-- kept inline svg for color control -->
+           
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 2.24902C6.51613 2.24902 2 6.70064 2 12.249C2 16.6361 4.87097 20.3781 8.87097 21.7329C9.3871 21.8297 9.54839 21.5071 9.54839 21.2813C9.54839 21.0555 9.54839 20.4103 9.51613 19.5393C6.74194 20.1845 6.16129 18.1845 6.16129 18.1845C5.70968 17.0555 5.03226 16.7329 5.03226 16.7329C4.12903 16.0877 5.06452 16.0877 5.06452 16.0877C6.06452 16.12 6.6129 17.12 6.6129 17.12C7.48387 18.6684 8.96774 18.2168 9.51613 17.9264C9.6129 17.2813 9.87097 16.8297 10.1613 16.5716C7.96774 16.3458 5.6129 15.4748 5.6129 11.6684C5.6129 10.5716 6.03226 9.70064 6.64516 9.02322C6.54839 8.79741 6.19355 7.76515 6.74194 6.37806C6.74194 6.37806 7.6129 6.11999 9.51613 7.41031C10.3226 7.18451 11.1613 7.05548 12.0323 7.05548C12.9032 7.05548 13.7742 7.15225 14.5484 7.41031C16.4516 6.15225 17.2903 6.37806 17.2903 6.37806C17.8387 7.73289 17.5161 8.79741 17.3871 9.02322C18.0323 9.70064 18.4194 10.6039 18.4194 11.6684C18.4194 15.4748 16.0645 16.3458 13.871 16.5716C14.2258 16.8942 14.5484 17.5393 14.5484 18.4426C14.5484 19.7974 14.5161 20.8619 14.5161 21.1845C14.5161 21.4426 14.7097 21.7329 15.1935 21.6361C19.129 20.3135 22 16.6039 22 12.1845C21.9677 6.70064 17.4839 2.24902 12 2.24902Z" fill="#000000"/>
             </svg>
@@ -94,14 +94,13 @@ import ubiIcon from "./imagenesIcons/ubi.svg";
   </section>
 
   <style>
-  /* ensure hero content is not hidden under the sticky nav */
-  /* increased padding so the heading is fully visible below the sticky nav (raised further) */
+  
   .hero-section{ padding-top:160px; }
   @media (max-width: 640px){ .hero-section{ padding-top:160px; } }
 
-    /* posicionar la fila de iconos; en desktop a la izquierda junto al título */
+    
   .social-row{ position:relative; display:flex; align-items:center; justify-content:flex-start; gap:12px; margin-top:8px; z-index:20; }
-    /* estilo para los enlaces sociales: circulito blanco con icono dentro */
+    
     .social-row a{
       display:inline-flex;
       align-items:center;
@@ -116,32 +115,32 @@ import ubiIcon from "./imagenesIcons/ubi.svg";
       transition: transform 160ms ease, box-shadow 160ms ease;
     }
     .social-row a:hover{ transform: translateY(-4px); box-shadow: 0 14px 30px rgba(2,6,23,0.22); }
-    /* make the inner icon larger */
+    
     .social-row img, .social-row svg{ width:36px; height:36px; display:block; }
-    /* ensure inline SVGs use a visible color (dark) unless they use currentColor */
+   
     .social-row svg{ color: #0f172a; fill: #0f172a; stroke: #0f172a; }
 
-  /* ubicación debajo de logos */
-  /* centrar el bloque de ubicación dentro de la columna izquierda */
+ 
+  
   .location{ z-index:20; display:flex; align-items:center; gap:0.75rem; margin-top:8px; width:100%; justify-content:center; }
   .ubi-icon{ width:28px; height:28px; display:block; }
   .ubi-text{ font-weight:600; color:#374151; }
   @media (max-width:640px){ .ubi-icon{ width:22px; height:22px; } .ubi-text{ font-size:0.95rem; } }
 
-    /* HERO GRID layout */
-  /* center the whole hero composition on the page */
+    
+ 
   .hero-grid{ display:grid; grid-template-columns: 1fr 560px 1fr; align-items:center; gap:2.5rem; width:100%; max-width:1400px; margin:0 auto; justify-items:center; }
   .hero-left{ padding:2rem 0; text-align:left; align-self:center; justify-self:stretch; }
   .hero-right{ padding:2rem 0; text-align:left; align-self:center; justify-self:stretch; }
-  /* move the main heading down more so sticky nav doesn't overlap it */
+  
   .hero-left h1{ margin-top: 4rem; text-align: center; justify-self: center; width:100%; }
-  /* also center the subtitle under the main heading */
+ 
   .hero-left h2{ text-align: center; justify-self: center; width:100%; }
   @media (max-width: 640px){ .hero-left h1{ margin-top: 6rem; } }
     .hero-center .avatar-wrap{ display:flex; align-items:center; justify-content:center; }
-  /* show the avatar as the raw photo (no circular frame) */
+
   .avatar-img{ width:520px; height:520px; object-fit:cover; border-radius:0; border:none; box-shadow:none; background:transparent; }
-    /* Gradient overlay at the bottom of the avatar (subtle, sits over the image) */
+   
     .avatar-wrap::after{
       content:"";
       position:absolute;
@@ -150,15 +149,15 @@ import ubiIcon from "./imagenesIcons/ubi.svg";
       bottom:0;
       height:30%;
       pointer-events:none;
-      z-index:20; /* above the photo */
+      z-index:20;
       background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
     }
     @media (max-width: 1024px){ .avatar-wrap::after{ height:36%; } }
     @media (max-width: 640px){ .avatar-wrap::after{ height:48%; } }
 
-  /* background image was removed per request */
+  
 
-    /* ajustes responsivos: en pantallas pequeñas apilar verticalmente */
+    
     @media (max-width: 1024px){
       .hero-grid{ grid-template-columns: 1fr; text-align:center; }
       .hero-left, .hero-right{ align-items:center; text-align:center; }
@@ -167,12 +166,12 @@ import ubiIcon from "./imagenesIcons/ubi.svg";
   .avatar-wrap::after{ height:42%; }
     }
 
-    /* ajustes responsivos pequeños */
+   
   @media (max-width: 640px){ .social-row{ gap:10px; } .social-row a{ width:44px; height:44px; padding:6px } .social-row img, .social-row svg{ width:24px; height:24px } .avatar-img{ width:160px; height:160px } .avatar-wrap::after{ height:48%; } }
   </style>
 
   <script>
-    // Ajuste dinámico del padding-top del hero según la altura de la nav sticky
+    
     (function(){
       const heroEl = /** @type {any} */ (document.querySelector('.hero-section'));
       const navEl = /** @type {any} */ (document.querySelector('.site-nav'));
@@ -180,14 +179,14 @@ import ubiIcon from "./imagenesIcons/ubi.svg";
       function adjust(){
         // @ts-ignore
         const navHeight = navEl.getBoundingClientRect().height || 0;
-  // dejar un espacio extra mayor para asegurar que el H1 no quede tapado
+  
   // @ts-ignore
   heroEl.style.paddingTop = (navHeight + 48) + 'px';
       }
       document.addEventListener('DOMContentLoaded', adjust);
       window.addEventListener('load', adjust);
       window.addEventListener('resize', adjust);
-      // si la nav cambia (por ejemplo al abrir el mobile menu), recalcular
+     
       try{
         const mo = new MutationObserver(adjust);
         mo.observe(navEl, { attributes: true, childList: true, subtree: true });
