@@ -1,13 +1,27 @@
 ---
 import ubiIcon from "./imagenesIcons/ubi.svg";
+import htmlIcon from "./imagenesIcons/HTML.svg";
+import cssIcon from "./imagenesIcons/CSS.svg";
+import jsIcon from "./imagenesIcons/JS.svg";
+import javaGif from "./imagenesIcons/java.gif";
+import gitIcon from "./imagenesIcons/git.svg";
+import githubIcon from "./imagenesIcons/github.svg";
+import astroIcon from "./imagenesIcons/astro.png";
+import bootsIcon from "./imagenesIcons/boots.svg";
+import sqlIcon from "./imagenesIcons/sql.png";
+import ideaIcon from "./imagenesIcons/idea.svg";
+import vscIcon from "./imagenesIcons/vsc.svg";
+import postmanIcon from "./imagenesIcons/postman.svg";
+import scrumIcon from "./imagenesIcons/scrum.png";
+import reactIcon from "./imagenesIcons/REAC-.png";
 
 
 ---
 
 <section class="hero-section relative w-full min-h-screen">
 
-  <div class="absolute inset-0 flex items-center justify-center">
-    <!-- Grid -->
+  <div class="flex items-center justify-center">
+    <!-- Grid (no absolute: keep content in normal flow so mobile sections don't overlap) -->
   <div class="hero-grid w-full px-6">
   <div class="hero-left text-gray-900 flex flex-col items-start justify-center">
   <h1 class="text-4xl font-black mb-4">LEIDI ELVIRA LOPEZ SILVAN</h1>
@@ -105,10 +119,209 @@ import ubiIcon from "./imagenesIcons/ubi.svg";
 
   </section>
 
+  <!-- Secciones SPA: Tecnologías / Cursos / Proyectos / Contáctame -->
+
+  <section id="tecnologias" class="skills-section py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-6 text-center">Habilidades técnicas en:</h2>
+      <div class="skills-grid" role="list">
+        <div class="skill-card" role="listitem">
+          <img src={htmlIcon.src} alt="HTML5" />
+          <span>HTML</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={cssIcon.src} alt="CSS3" />
+          <span>CSS</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={jsIcon.src} alt="JavaScript" />
+          <span>JavaScript</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={javaGif.src} alt="Java" />
+          <span>Java</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={gitIcon.src} alt="Git" />
+          <span>Git</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={githubIcon.src} alt="Git / GitHub" />
+          <span>GitHub</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={astroIcon.src} alt="Astro" />
+          <span>Astro</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={reactIcon.src} alt="React" />
+          <span>React</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={bootsIcon.src} alt="Bootstrap" />
+          <span>Bootstrap</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={sqlIcon.src} alt="SQL" />
+          <span>SQL</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={ideaIcon.src} alt="IntelliJ IDEA" />
+          <span>IntelliJ IDEA</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={vscIcon.src} alt="Visual Studio Code" />
+          <span>Visual Studio Code</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={postmanIcon.src} alt="Postman" />
+          <span>Postman</span>
+        </div>
+
+        <div class="skill-card" role="listitem">
+          <img src={scrumIcon.src} alt="Metodología Scrum" />
+          <span>Metodología Scrum</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cursos" class="page container py-12">
+    <div class="inner max-w-5xl mx-auto px-6 py-8">
+      <h2 class="title text-3xl text-center font-bold mb-4">Cursos</h2>
+      <p class="lead text-center mb-6">Aquí verás una lista de cursos y certificaciones que he completado.</p>
+      <ul class="courses-list">
+        <li class="course-card">
+          <div class="course-left">
+            <strong class="course-title">Lógica de programación</strong>
+            <div class="course-provider">Capacítate para el empleo</div>
+          </div>
+          <div class="course-right">
+            <span class="date-badge">Julio 2025</span>
+            <a class="cred-link" href="https://aprende.org/verifica/61e873d7-ce74-4813-9b84-d789cc91a935/cedc819b-3a5b-450b-b87f-2070aac66393/" target="_blank" rel="noopener noreferrer">Ver credencial</a>
+          </div>
+        </li>
+
+        <li class="course-card">
+          <div class="course-left">
+            <strong class="course-title">Introducción a Java</strong>
+            <div class="course-provider">Accenture</div>
+          </div>
+          <div class="course-right">
+            <span class="date-badge">Agosto 2025</span>
+            <span class="no-cred">—</span>
+          </div>
+        </li>
+
+        <li class="course-card">
+          <div class="course-left">
+            <strong class="course-title">Java: Explora el lenguaje desde cero</strong>
+            <div class="course-provider">DevTalles</div>
+          </div>
+          <div class="course-right">
+            <span class="date-badge">Octubre 2025</span>
+            <a class="cred-link" href="https://cursos.devtalles.com/certificates/aoz4sxssj3" target="_blank" rel="noopener noreferrer">Ver credencial</a>
+          </div>
+        </li>
+
+        <li class="course-card">
+          <div class="course-left">
+            <strong class="course-title">JavaScript Moderno: Guía para dominar el lenguaje</strong>
+            <div class="course-provider">DevTalles</div>
+          </div>
+          <div class="course-right">
+            <span class="date-badge">Octubre 2025</span>
+            <a class="cred-link" href="https://cursos.devtalles.com/certificates/p3kh3i9b4y" target="_blank" rel="noopener noreferrer">Ver credencial</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="proyectos" class="projects-section py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-6 text-center">Proyectos</h2>
+      <div class="projects-grid" role="list">
+        <article class="project-card" role="listitem">
+          <div class="project-gallery" role="group" aria-label="Galería Agencia de Viajes">
+            <img src="https://res.cloudinary.com/dbkawoy1e/image/upload/v1762325567/Captura_de_pantalla_2025-11-05_a_la_s_12.52.40_a.m._kvrum6.png" alt="Agencia preview 1" class="project-thumb" />
+            <img src="https://res.cloudinary.com/dbkawoy1e/image/upload/v1762400896/Captura_de_pantalla_2025-11-05_a_la_s_9.48.10_p.m._ykaoyo.png" alt="Agencia preview 2" class="project-thumb" />
+            <img src="https://res.cloudinary.com/dbkawoy1e/image/upload/v1762325634/Captura_de_pantalla_2025-11-05_a_la_s_12.53.39_a.m._ye2or1.png" alt="Agencia preview 3" class="project-thumb" />
+          </div>
+          <h4 class="project-title">E-commerce <br />
+            Agencia de Viajes</h4>
+          <p class="project-desc">
+            Sitio web para una agencia de viajes que permite buscar destinos, explorar una galería y realizar reservas mediante un formulario interactivo. 
+Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScript para la interactividad, Java para la lógica del servidor y MySQL para la gestión de datos de reservas y destinos.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/LeidiSilvan/Agenciadeviajes" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://leidisilvan.github.io/Agenciadeviajes/" target="_blank" rel="noopener noreferrer">Demo</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contactame" class="contact-section py-12">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-4 text-center">Contáctame</h2>
+      <p class="text-center text-gray-600 mb-6">Escríbeme si tienes una propuesta, una duda o quieres colaborar.</p>
+
+      <div class="w-full max-w-2xl mt-4 mx-auto">
+        <form id="contact-native-form-spa" action="https://formsubmit.co/silvanleidi@gmail.com" method="POST" class="space-y-4 bg-white p-6 rounded-lg shadow-md form-card">
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_subject" value="Nuevo mensaje desde tu portfolio" />
+
+          <div>
+            <label for="spa-name" class="block font-medium form-label">Nombre <span class="text-red-600">*</span></label>
+            <input id="spa-name" name="name" type="text" required class="form-input" placeholder="Tu nombre" />
+          </div>
+
+          <div>
+            <label for="spa-email" class="block font-medium form-label">Email <span class="text-red-600">*</span></label>
+            <input id="spa-email" name="_replyto" type="email" required class="form-input" placeholder="tu@correo.com" />
+          </div>
+
+          <div>
+            <label for="spa-subject" class="block font-medium form-label">Asunto <span class="text-red-600">*</span></label>
+            <input id="spa-subject" name="subject" type="text" required class="form-input" placeholder="¿Sobre qué quieres escribirme?" />
+          </div>
+
+          <div>
+            <label for="spa-message" class="block font-medium form-label">Mensaje <span class="text-red-600">*</span></label>
+            <textarea id="spa-message" name="message" rows="6" required class="form-textarea" placeholder="Cuéntame tu propuesta, duda o comentario..."></textarea>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button type="submit" id="contact-submit-spa" class="date-badge px-5 py-2 rounded-lg">Enviar correo</button>
+          </div>
+
+          <div id="contact-success-spa" class="hidden mt-4 p-4 rounded bg-green-50 text-green-800">Mensaje enviado. Gracias por contactarme.</div>
+          <div id="contact-error-spa" class="hidden mt-4 p-4 rounded bg-red-50 text-red-800">Error al enviar. Por favor intenta de nuevo.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <style>
   
-  .hero-section{ padding-top:160px; }
-  @media (max-width: 640px){ .hero-section{ padding-top:160px; } }
+  /* Use nav height to position hero, keep a minimal gap; reduce further for mobile so
+    the hero title appears near the top of the viewport on small screens. */
+  .hero-section{ padding-top: calc(var(--nav-height, 64px) + 8px); }
+  @media (max-width: 640px){ .hero-section{ padding-top: calc(var(--nav-height, 56px) + 4px); } }
 
     
   .social-row{ position:relative; display:flex; align-items:center; justify-content:flex-start; gap:12px; margin-top:8px; z-index:20; }
@@ -241,10 +454,10 @@ import ubiIcon from "./imagenesIcons/ubi.svg";
   .hero-left{ padding:2rem 0; text-align:left; align-self:center; justify-self:stretch; }
   .hero-right{ padding:2rem 0; text-align:left; align-self:center; justify-self:stretch; }
   
-  .hero-left h1{ margin-top: 4rem; text-align: center; justify-self: center; width:100%; }
- 
+  .hero-left h1{ margin-top: 1rem; text-align: center; justify-self: center; width:100%; }
+
   .hero-left h2{ text-align: center; justify-self: center; width:100%; }
-  @media (max-width: 640px){ .hero-left h1{ margin-top: 6rem; } }
+  @media (max-width: 640px){ .hero-left h1{ margin-top: 0.5rem; } }
     .hero-center .avatar-wrap{ display:flex; align-items:center; justify-content:center; }
 
   .avatar-img{ width:520px; height:520px; object-fit:cover; border-radius:0; border:none; box-shadow:none; background:transparent; }
@@ -277,9 +490,112 @@ import ubiIcon from "./imagenesIcons/ubi.svg";
    
   @media (max-width: 640px){ .social-row{ gap:10px; } .social-row a{ width:44px; height:44px; padding:6px } .social-row img, .social-row svg{ width:24px; height:24px } .avatar-img{ width:160px; height:160px } .avatar-wrap::after{ height:48%; } }
 
+  /* Desktop: vertically center the hero content within the available viewport (accounting for fixed nav).
+     Scoped to large screens so mobile/responsive rules remain as-is. */
+  @media (min-width: 1024px) {
+    .hero-section{
+      min-height: calc(100vh - var(--nav-height, 64px));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 0; /* runtime JS will set a small padding if needed */
+    }
+    .hero-grid{ align-items: center; }
+  }
+
   /* CV buttons hover (nice effect) */
   .hero-left .btn-primary{ transition: transform 200ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms ease, background-position 400ms ease; background-size:200% 100%; }
   .hero-left .btn-primary:hover{ transform: translateY(-4px) scale(1.02); box-shadow: 0 18px 46px rgba(124,58,237,0.18); background-position:100% 50%; }
+  /* ====== Tecnologias (skills) styles ====== */
+  .skills-section{ background: transparent; padding-bottom: 48px; }
+  .skills-grid {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 18px;
+    padding: 0 20px;
+  }
+  .skill-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+  .skill-card img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px; }
+  .skill-card span { font-size: 1rem; font-weight: 700; color: #0f172a; text-align: center; }
+  .skill-card:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12); cursor: pointer; }
+  @media (max-width: 1024px) { .skill-card img { width: 64px; height: 64px; } }
+  @media (max-width: 640px) { .skills-grid { gap: 12px; } .skill-card img { width: 56px; height: 56px; } }
+
+  /* ====== Cursos styles ====== */
+  .page{ color:var(--text-color,#111827); }
+  .title{ font-size:2rem; margin-bottom:0.5rem; font-weight:800; text-align:center }
+  .lead{ font-size:1.05rem; color:#374151; margin-bottom:1.25rem; text-align:center }
+  .courses-list{ list-style:none; padding:0; display:flex; flex-direction:column; gap:14px }
+  .course-card{ display:flex; align-items:center; justify-content:space-between; gap:12px }
+  .courses-list li{ background:#fff; border-radius:10px; padding:14px 18px; box-shadow:0 6px 20px rgba(2,6,23,0.06) }
+  .course-title{ display:block; font-size:1.05rem }
+  .course-provider{ color:#6b7280; font-size:0.95rem; margin-top:6px }
+  .course-actions, .course-right{ display:flex; align-items:center; gap:10px }
+  .date-badge{ background: rgba(15,23,42,0.06); padding:6px 8px; border-radius:8px; font-weight:700; color:#374151 }
+  .cred-link{ display:inline-block; padding:8px 12px; background: linear-gradient(90deg,#7c3aed,#ec4899); color:#fff; border-radius:8px; text-decoration:none; font-weight:700; box-shadow: 0 6px 18px rgba(124,58,237,0.18); transition: transform 160ms ease, box-shadow 160ms ease }
+  .cred-link:hover{ transform: translateY(-3px); box-shadow: 0 14px 30px rgba(124,58,237,0.22) }
+  .no-cred{ color:#9ca3af; font-weight:600 }
+
+  /* ====== Projects styles ====== */
+  .projects-section { background: transparent; padding-top: 12px; padding-bottom: 48px; }
+  .projects-grid {
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 0 20px;
+  }
+  .project-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 260ms cubic-bezier(.2,.9,.3,1), box-shadow 260ms cubic-bezier(.2,.9,.3,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before{ content: ''; position: absolute; left: -40px; top: 0; bottom: 0; width: 6px; background: linear-gradient(180deg,#7c3aed,#06b6d4); border-top-right-radius: 6px; border-bottom-right-radius: 6px; transform: translateX(-12px); transition: transform 260ms cubic-bezier(.2,.9,.3,1), opacity 260ms; opacity: 0; }
+  .project-card:hover::before{ transform: translateX(0); opacity: 1; }
+  .project-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 36px 80px rgba(15,23,42,0.18); cursor: pointer; }
+  .project-gallery{ display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; }
+  .project-gallery .project-thumb{ width:100%; height:160px; object-fit:cover; border-radius:10px; transition: transform 360ms cubic-bezier(.2,.9,.3,1), filter 260ms; }
+  .project-links a { display: inline-block; padding: 8px 12px; background: #ffffff; border-radius: 10px; box-shadow: 0 2px 8px rgba(124, 58, 237, 0.06); color: #0f172a; font-weight: 700; text-decoration: none; transition: transform 0.18s, box-shadow 0.18s, background 0.18s; }
+  .project-links a:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(124, 58, 237, 0.12); background: linear-gradient(90deg, rgba(124,58,237,0.08), rgba(6,182,212,0.06)); }
+  @media (max-width: 1024px) { .project-img { height: 200px; } }
+  @media (max-width: 640px) { .project-img { height: 160px; } .projects-grid{ max-width: 640px; } }
+
+  /* ====== Contact form (copied styles) ====== */
+  .form-card{ background: linear-gradient(180deg,#ffffff,#fbfdff); border-radius:12px; padding:1.1rem; border:1px solid rgba(15,23,42,0.04); box-shadow: 0 12px 36px rgba(2,6,23,0.06); }
+  .form-label{ color:#0f172a; font-weight:700; margin-bottom:0.35rem; }
+  .form-input, .form-textarea{ width:100%; padding:0.7rem 0.9rem; border-radius:10px; border:1px solid #e6e8eb; font-size:0.96rem; transition: box-shadow 140ms ease, border-color 140ms ease, transform 120ms ease; }
+  .form-input::placeholder, .form-textarea::placeholder{ color:#9ca3af }
+  .form-input:focus, .form-textarea:focus{ outline:none; border-color:#7c3aed; box-shadow:0 10px 30px rgba(124,58,237,0.06); transform: translateY(-1px); }
+  .form-textarea{ min-height:140px; resize:vertical }
+  .form-help{ font-size:0.9rem; color:#6b7280; }
+  .form-row{ display:flex; gap:12px; }
+  .form-row .form-input{ flex:1 }
+  .form-success{ display:flex; align-items:center; gap:8px; padding:0.9rem; border-radius:8px; background:#ecfdf5; color:#065f46 }
+  .form-error{ display:flex; align-items:center; gap:8px; padding:0.9rem; border-radius:8px; background:#fff1f2; color:#7f1d1d }
+
+  /* Ensure anchor targets are not hidden under the fixed nav when navigating by hash */
+  section { scroll-margin-top: calc(var(--nav-height, 64px) + 12px); }
   </style>
 
   <script>
@@ -289,11 +605,12 @@ import ubiIcon from "./imagenesIcons/ubi.svg";
       const navEl = /** @type {any} */ (document.querySelector('.site-nav'));
       if(!heroEl || !navEl) return;
       function adjust(){
-        // @ts-ignore
-        const navHeight = navEl.getBoundingClientRect().height || 0;
-  
+    // @ts-ignore
+    const navHeight = navEl.getBoundingClientRect().height || 0;
+
   // @ts-ignore
-  heroEl.style.paddingTop = (navHeight + 48) + 'px';
+  // use a small extra gap so hero title sits close to top on mobile
+  heroEl.style.paddingTop = (navHeight + 8) + 'px';
       }
       document.addEventListener('DOMContentLoaded', adjust);
       window.addEventListener('load', adjust);
@@ -303,6 +620,101 @@ import ubiIcon from "./imagenesIcons/ubi.svg";
         const mo = new MutationObserver(adjust);
         mo.observe(navEl, { attributes: true, childList: true, subtree: true });
       }catch(e){}
+    })();
+    
+    // form handler for SPA contact form (fetch + iframe fallback)
+    (function(){
+      const formEl = document.getElementById('contact-native-form-spa');
+      if(!formEl) return;
+      /** @type {HTMLFormElement} */
+      const form = /** @type {HTMLFormElement} */ (formEl);
+      const submitBtnEl = document.getElementById('contact-submit-spa');
+      /** @type {HTMLButtonElement | null} */
+      const submitBtn = submitBtnEl ? /** @type {HTMLButtonElement} */ (submitBtnEl) : null;
+      /** @type {HTMLElement | null} */
+      const successBox = document.getElementById('contact-success-spa');
+      /** @type {HTMLElement | null} */
+      const errorBox = document.getElementById('contact-error-spa');
+      const ENDPOINT = form.action;
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Enviando...'; }
+        if(successBox) successBox.classList.add('hidden');
+        if(errorBox) errorBox.classList.add('hidden');
+
+        const fd = new FormData(form);
+        const name = (fd.get('name')||'').toString().trim();
+        const replyto = (fd.get('_replyto')||'').toString().trim();
+        const subject = (fd.get('subject')||'').toString().trim();
+        const message = (fd.get('message')||'').toString().trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!name || !replyto || !subject || !message || !emailRegex.test(replyto)){
+          if(errorBox){ errorBox.textContent = 'Completa los campos obligatorios con información válida.'; errorBox.classList.remove('hidden'); }
+          if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar correo'; }
+          return;
+        }
+
+        try{
+          const res = await fetch(ENDPOINT, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
+          if(res.ok){ if(successBox){ successBox.classList.remove('hidden'); } form.reset(); if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar correo'; } return; }
+          else {
+            let data = null;
+            try{ data = await res.json(); }catch(_){ }
+            if(errorBox){ errorBox.textContent = 'Error al enviar: ' + (data && data.message ? data.message : res.statusText); errorBox.classList.remove('hidden'); }
+          }
+        } catch(err){
+          // fallback: iframe submit
+          try{
+            /** @type {HTMLIFrameElement | null} */
+            let iframe = /** @type {HTMLIFrameElement | null} */ (document.getElementById('formsubmit-iframe-spa'));
+            if(!iframe){ iframe = document.createElement('iframe'); iframe.style.display = 'none'; iframe.name = 'formsubmit-iframe-spa'; iframe.id = 'formsubmit-iframe-spa'; document.body.appendChild(iframe); }
+            form.target = 'formsubmit-iframe-spa';
+            form.submit();
+            if(successBox){ successBox.classList.remove('hidden'); }
+            form.reset();
+            if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar correo'; }
+            return;
+          }catch(submitErr){ if(errorBox){ errorBox.textContent = 'Error al enviar (fallback): ' + (submitErr && /** @type any */ (submitErr).message ? /** @type any */ (submitErr).message : String(submitErr)); errorBox.classList.remove('hidden'); } }
+        } finally { if(submitBtn && !submitBtn.disabled){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar correo'; } }
+      });
+    })();
+
+    // Smooth scroll for nav links to anchors and mobile menu close
+    (function(){
+      const mobileMenu = document.getElementById('mobile-menu');
+      const navToggle = document.getElementById('nav-toggle');
+      const navLinks = document.querySelectorAll('.nav-right a.nav-link, #mobile-menu a.mobile-link');
+
+      /** @type {(href: string) => void} */
+      const scrollToSection = (href) => {
+        const target = document.querySelector(href);
+        if(!target) return;
+        const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height') || '64', 10) || 64;
+        const rect = target.getBoundingClientRect();
+        const absoluteTop = window.scrollY + rect.top;
+        // center the section title in the viewport, but ensure not to go past document bounds
+        const desired = Math.max(0, Math.round(absoluteTop - (window.innerHeight / 2) + (rect.height / 2)));
+        window.scrollTo({ top: desired, behavior: 'smooth' });
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e){
+          const href = link.getAttribute('href');
+          if(href && href.startsWith('#')){
+            e.preventDefault();
+            // smooth scroll and update url
+            scrollToSection(href);
+            try{ history.replaceState(null, '', href); }catch(e){}
+            if(mobileMenu && !mobileMenu.classList.contains('hidden')){ mobileMenu.classList.add('hidden'); if(navToggle) navToggle.setAttribute('aria-expanded','false'); }
+          }
+        });
+      });
+
+      // if page loads with a hash, scroll to it (delay a bit to allow layout/styles to settle)
+      if(window.location.hash){
+        setTimeout(()=>{ try{ scrollToSection(window.location.hash); }catch(e){} }, 80);
+      }
     })();
   </script>
 

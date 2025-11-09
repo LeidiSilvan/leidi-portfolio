@@ -8,10 +8,10 @@
     </div>
 
     <div class="nav-right flex gap-4 items-center">
-      <a href="/tecnologias" class="nav-link">Tecnologías</a>
-      <a href="/cursos" class="nav-link">Cursos</a>
-      <a href="/proyectos" class="nav-link">Proyectos</a>
-      <a href="/contactame" class="nav-link">Contáctame</a>
+  <a href="#tecnologias" class="nav-link">Tecnologías</a>
+  <a href="#cursos" class="nav-link">Cursos</a>
+  <a href="#proyectos" class="nav-link">Proyectos</a>
+  <a href="#contactame" class="nav-link">Contáctame</a>
     </div>
 
     <!-- botón para móviles -->
@@ -21,16 +21,17 @@
   </div>
 
   <!-- menú móvil oculto por defecto -->
-  <div id="mobile-menu" class="mobile-menu hidden">
-    <a href="/tecnologias" class="mobile-link">Tecnologías</a>
-    <a href="/cursos" class="mobile-link">Cursos</a>
-    <a href="/proyectos" class="mobile-link">Proyectos</a>
-    <a href="/contactame" class="mobile-link">Contáctame</a>
+    <div id="mobile-menu" class="mobile-menu hidden">
+    <a href="#tecnologias" class="mobile-link">Tecnologías</a>
+    <a href="#cursos" class="mobile-link">Cursos</a>
+    <a href="#proyectos" class="mobile-link">Proyectos</a>
+    <a href="#contactame" class="mobile-link">Contáctame</a>
   </div>
 
   <style>
   :root{ --nav-bg-1: #2b2636; --nav-bg-2: #733876; --nav-text: #ffffff }
-  .site-nav{ position: sticky; top: 0; z-index:60; background: linear-gradient(90deg,var(--nav-bg-1),var(--nav-bg-2)); box-shadow: 0 8px 30px rgba(2,6,23,0.6); }
+  /* Keep the navbar fixed so it's visible at all times */
+  .site-nav{ position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index:80; background: linear-gradient(90deg,var(--nav-bg-1),var(--nav-bg-2)); box-shadow: 0 8px 30px rgba(2,6,23,0.6); }
     .nav-inner{ display:flex; align-items:center; justify-content:space-between; }
   .brand-text{ color: white; font-weight:800; font-size:1.15rem; letter-spacing:0.2px; padding:6px 10px; border-radius:999px; background: rgba(255,255,255,0.03); }
 
@@ -92,19 +93,22 @@
       }
 
       // mark active links in desktop and mobile nav
-      const locationPath = (p => { if(!p) return '/'; return p.endsWith('/') && p.length>1 ? p.slice(0,-1) : p; })(window.location.pathname);
+      // mark active links: prefer location.hash (SPA anchors), otherwise fall back to pathname
+      const hash = window.location.hash; // includes leading '#'
       const desktopLinks = /** @type {NodeListOf<HTMLAnchorElement>} */ (document.querySelectorAll('.nav-right a.nav-link'));
       desktopLinks.forEach((link) => {
         try{
           const href = link.getAttribute('href');
           if(!href) return;
-          const url = new URL(href, window.location.origin);
-          let lp = url.pathname;
-          lp = lp.endsWith('/') && lp.length>1 ? lp.slice(0,-1) : lp;
-          if(lp === locationPath || (lp !== '/' && locationPath.startsWith(lp))){
-            const el = /** @type {HTMLElement} */ (link);
-            el.classList.add('active');
-            el.setAttribute('aria-current', 'page');
+          if(hash && href.startsWith('#')){
+            if(href === hash){ link.classList.add('active'); link.setAttribute('aria-current','page'); }
+          } else {
+            // fallback: compare pathname as before
+            const url = new URL(href, window.location.origin);
+            let lp = url.pathname;
+            lp = lp.endsWith('/') && lp.length>1 ? lp.slice(0,-1) : lp;
+            const locationPath = (p => { if(!p) return '/'; return p.endsWith('/') && p.length>1 ? p.slice(0,-1) : p; })(window.location.pathname);
+            if(lp === locationPath || (lp !== '/' && locationPath.startsWith(lp))){ link.classList.add('active'); link.setAttribute('aria-current','page'); }
           }
         }catch(e){ }
       });
@@ -114,16 +118,71 @@
         try{
           const href = link.getAttribute('href');
           if(!href) return;
-          const url = new URL(href, window.location.origin);
-          let lp = url.pathname;
-          lp = lp.endsWith('/') && lp.length>1 ? lp.slice(0,-1) : lp;
-          if(lp === locationPath || (lp !== '/' && locationPath.startsWith(lp))){
-            const el = /** @type {HTMLElement} */ (link);
-            el.classList.add('active');
-            el.setAttribute('aria-current', 'page');
+          if(hash && href.startsWith('#')){
+            if(href === hash){ link.classList.add('active'); link.setAttribute('aria-current','page'); }
+          } else {
+            const url = new URL(href, window.location.origin);
+            let lp = url.pathname;
+            lp = lp.endsWith('/') && lp.length>1 ? lp.slice(0,-1) : lp;
+            const locationPath = (p => { if(!p) return '/'; return p.endsWith('/') && p.length>1 ? p.slice(0,-1) : p; })(window.location.pathname);
+            if(lp === locationPath || (lp !== '/' && locationPath.startsWith(lp))){ link.classList.add('active'); link.setAttribute('aria-current','page'); }
           }
         }catch(e){ }
       });
+    
+      // expose nav height as a CSS variable so pages can avoid being overlapped
+      try{
+        const navEl = document.querySelector('.site-nav');
+        function setNavHeight(){
+          if(!navEl) return;
+          const h = navEl.getBoundingClientRect().height || 0;
+          document.documentElement.style.setProperty('--nav-height', h + 'px');
+        }
+        setNavHeight();
+        window.addEventListener('resize', setNavHeight);
+        const mo = new MutationObserver(setNavHeight);
+        if(navEl) mo.observe(navEl, { attributes: true, childList: true, subtree: true });
+      }catch(e){}
+      // Observe sections and update active nav link on scroll (SPA behavior)
+      try{
+        const getNavHeight = () => {
+          const val = getComputedStyle(document.documentElement).getPropertyValue('--nav-height') || '64px';
+          const n = parseInt(val.trim().replace('px',''), 10);
+          return isFinite(n) ? n : 64;
+        };
+
+        const sections = /** @type {NodeListOf<HTMLElement>} */ (document.querySelectorAll('section[id]'));
+        if(sections && sections.length){
+          const observer = new IntersectionObserver((entries) => {
+            // pick the most visible section (highest intersectionRatio) and mark only its links active
+            const visible = entries.filter(e => e.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio);
+            // clear previous active states
+            document.querySelectorAll('.nav-right a.nav-link.active, #mobile-menu a.mobile-link.active').forEach(el => {
+              el.classList.remove('active');
+              el.removeAttribute('aria-current');
+            });
+
+            if(visible.length){
+              const top = visible[0].target;
+              const id = '#' + top.id;
+              const desktopLink = document.querySelector('.nav-right a.nav-link[href="' + id + '"]');
+              const mobileLink = document.querySelector('#mobile-menu a.mobile-link[href="' + id + '"]');
+              if(desktopLink){ desktopLink.classList.add('active'); desktopLink.setAttribute('aria-current','page'); }
+              if(mobileLink){ mobileLink.classList.add('active'); mobileLink.setAttribute('aria-current','page'); }
+            }
+          }, {
+            root: null,
+            rootMargin: `-${getNavHeight()}px 0px -40% 0px`,
+            threshold: 0.25
+          });
+
+          sections.forEach(s => observer.observe(s));
+          // update observer when nav height changes
+          const moNav = new MutationObserver(() => { observer.disconnect(); sections.forEach(s => observer.observe(s)); });
+          const navEl = document.querySelector('.site-nav');
+          if(navEl) moNav.observe(navEl, { attributes: true, childList: true, subtree: true });
+        }
+      }catch(e){}
     })();
   </script>
 </nav>

@@ -64,7 +64,8 @@ import Footer from "../components/Footer.astro";
     max-width: 1200px;
     margin: 0 auto;
     flex: 1 1 auto;
-    padding: 24px 16px;
+    /* leave space for the fixed navbar using the --nav-height variable (fallback 64px) */
+    padding: calc(var(--nav-height, 64px) + 24px) 16px 24px 16px;
     box-sizing: border-box;
   }
 </style>
