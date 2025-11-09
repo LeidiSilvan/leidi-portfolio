@@ -1,5 +1,4 @@
 ---
-import cvIcon from "./imagenesIcons/cv.svg";
 import ubiIcon from "./imagenesIcons/ubi.svg";
 
 
@@ -15,13 +14,18 @@ import ubiIcon from "./imagenesIcons/ubi.svg";
     <h2 class="text-2xl font-light mb-6 flex flex-col items-center justify-center">DESARROLLADORA FULLSTACK</h2>
         <div class="social-row flex items-center gap-4">
           <a
-            href="/cv-leidi-lopez-silvan.pdf"
+            class="icon icon-phone"
+            href="https://wa.me/529934447629"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Ver CV"
-            class="cv-svg-link"
-          >
-            <img width="40" height="40" src={cvIcon.src} alt="Ver CV" />
+            aria-label="Enviar mensaje por WhatsApp o llamar"
+            title="Abrir WhatsApp (Aceptar) o llamar (Cancelar)"
+            onclick="(function(e){e.preventDefault(); if(confirm('¿Quieres abrir WhatsApp para enviar un mensaje? Pulsa Aceptar para WhatsApp, o Cancelar para llamar.')){ window.open('https://wa.me/529934447629','_blank'); } else { window.location.href='tel:+529934447629'; } })(event)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+              <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+            </svg>
           </a>
 
           <a
@@ -127,6 +131,30 @@ import ubiIcon from "./imagenesIcons/ubi.svg";
     .social-row img, .social-row svg{ width:36px; height:36px; display:block; }
    
     .social-row svg{ color: #0f172a; fill: #0f172a; stroke: #0f172a; }
+
+    /* Ensure any icon with class .icon inside .social-row uses the same visual as contactame's .icon */
+    .social-row a.icon{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:56px;
+      height:56px;
+      border-radius:999px;
+      flex-shrink:0;
+      background:#ffffff;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+      border:1px solid rgba(15,23,42,0.04);
+      position:relative;
+      padding:8px;
+      text-decoration:none;
+      transition: transform 200ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms ease, background 200ms ease;
+      cursor: pointer;
+    }
+  .social-row a.icon:focus{ outline: none; box-shadow: 0 0 0 4px rgba(79,70,229,0.12); }
+  /* Use same hover as the github icon: small lift and softer shadow (no color-change on the svg) */
+  .social-row a.icon:hover{ transform: translateY(-4px); box-shadow: 0 14px 30px rgba(2,6,23,0.22); }
+  .social-row a.icon:active{ transform: translateY(-2px); }
+  .social-row a.icon svg{ display:block; width:36px; height:36px; stroke:currentColor; fill:none; transition: transform 160ms ease; }
 
     /* icon-with-label: use the same visual as .icon (defined in global.css) but show a text label */
     .icon-with-label{ display:inline-flex; align-items:center; gap:10px; text-decoration:none; }
