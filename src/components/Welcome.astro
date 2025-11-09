@@ -21,7 +21,7 @@ import reactIcon from "./imagenesIcons/REAC-.png";
 <section class="hero-section relative w-full min-h-screen">
 
   <div class="flex items-center justify-center">
-    <!-- Grid (no absolute: keep content in normal flow so mobile sections don't overlap) -->
+   
   <div class="hero-grid w-full px-6">
   <div class="hero-left text-gray-900 flex flex-col items-start justify-center">
   <h1 class="text-4xl font-black mb-4">LEIDI ELVIRA LOPEZ SILVAN</h1>
@@ -78,7 +78,7 @@ import reactIcon from "./imagenesIcons/REAC-.png";
 
           </div>
           
-          <!-- CV buttons placed below social icons: icon (contactame style) + label -->
+          <!-- CV  -->
           <div class="mt-4 flex items-center gap-4 justify-center cv-actions">
             <a class="icon-text-only" href="/cv-leidi-lopez-silvan.pdf" target="_blank" rel="noopener noreferrer" aria-label="Visualizar CV">Visualizar CV</a>
 
@@ -221,7 +221,7 @@ import reactIcon from "./imagenesIcons/REAC-.png";
           </div>
           <div class="course-right">
             <span class="date-badge">Agosto 2025</span>
-            <span class="no-cred">—</span>
+            <a class="cred-link" href="https://www.linkedin.com/in/leidisilvan/details/certifications/1758537323595/single-media-viewer/?profileId=ACoAAFplVpYB1wAYFnJq-wxgKSEQ9JvtiwxqE-U" target="_blank" rel="noopener noreferrer">Ver credencial</a>
           </div>
         </li>
 
@@ -318,8 +318,7 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
 
   <style>
   
-  /* Use nav height to position hero, keep a minimal gap; reduce further for mobile so
-    the hero title appears near the top of the viewport on small screens. */
+  
   .hero-section{ padding-top: calc(var(--nav-height, 64px) + 8px); }
   @media (max-width: 640px){ .hero-section{ padding-top: calc(var(--nav-height, 56px) + 4px); } }
 
@@ -345,7 +344,6 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
    
     .social-row svg{ color: #0f172a; fill: #0f172a; stroke: #0f172a; }
 
-    /* Ensure any icon with class .icon inside .social-row uses the same visual as contactame's .icon */
     .social-row a.icon{
       display:inline-flex;
       align-items:center;
@@ -364,17 +362,29 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
       cursor: pointer;
     }
   .social-row a.icon:focus{ outline: none; box-shadow: 0 0 0 4px rgba(79,70,229,0.12); }
-  /* Use same hover as the github icon: small lift and softer shadow (no color-change on the svg) */
   .social-row a.icon:hover{ transform: translateY(-4px); box-shadow: 0 14px 30px rgba(2,6,23,0.22); }
   .social-row a.icon:active{ transform: translateY(-2px); }
   .social-row a.icon svg{ display:block; width:36px; height:36px; stroke:currentColor; fill:none; transition: transform 160ms ease; }
 
-    /* icon-with-label: use the same visual as .icon (defined in global.css) but show a text label */
+    .social-row a:not(.icon){
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:56px;
+      height:56px;
+      border-radius:999px;
+      background:#ffffff;
+      padding:8px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+      border:1px solid rgba(15,23,42,0.04);
+      text-decoration:none;
+    }
+    .social-row a:not(.icon) svg, .social-row a:not(.icon) img{ width:36px; height:36px; display:block; }
+
     .icon-with-label{ display:inline-flex; align-items:center; gap:10px; text-decoration:none; }
     .icon-text{ font-weight:800; color:#374151; }
     .icon-with-label:hover .icon-text{ color:#4f46e5; }
 
-    /* text-only actions that reuse the visual language of the contact icons but without images */
     .icon-text-only{
       display:inline-flex;
       align-items:center;
@@ -391,11 +401,9 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
     }
     .icon-text-only:hover{ transform: translateY(-6px) scale(1.02); box-shadow: 0 24px 60px rgba(79,70,229,0.12); color:#4f46e5; }
     .icon-text-only:active{ transform: translateY(-2px) scale(0.99); }
-    /* keep CV actions on a single line */
     .cv-actions{ flex-wrap:nowrap; }
     .cv-actions .icon-text-only{ white-space:nowrap; }
 
-  /* social-action: reuse icon style + label */
   .social-action{ display:inline-flex; align-items:center; gap:10px; text-decoration:none; color:inherit }
   .social-action .action-icon{ display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:999px; background:#ffffff; padding:8px; box-shadow: 0 6px 18px rgba(2,6,23,0.18); transition: transform 160ms ease, box-shadow 160ms ease; }
   .social-action .action-icon img{ width:28px; height:28px; display:block }
@@ -409,12 +417,9 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
     transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
   }
 
-  /* keep icon static; label already colored by default, hover gives small lift */
   .social-action:hover .action-icon{ transform: none; box-shadow: 0 6px 18px rgba(2,6,23,0.18); }
   .social-action:hover .action-label{ transform: translateY(-3px); box-shadow: 0 18px 46px rgba(124,58,237,0.18); }
 
-  /* Ensure CV action links stay on a single line and sit slightly lower */
-  /* Ensure CV action links stay on a single line and sit noticeably lower */
   .cv-actions{
     display:flex;
     flex-wrap:nowrap;
@@ -434,7 +439,6 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
   }
   .cv-actions .social-action{ flex: 0 0 auto; white-space:nowrap; }
 
-  /* allow the text pills to shrink instead of forcing scroll */
   .cv-actions .icon-text-only{ flex: 0 1 auto; min-width: 0; }
 
   @media (max-width: 640px){
@@ -490,8 +494,7 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
    
   @media (max-width: 640px){ .social-row{ gap:10px; } .social-row a{ width:44px; height:44px; padding:6px } .social-row img, .social-row svg{ width:24px; height:24px } .avatar-img{ width:160px; height:160px } .avatar-wrap::after{ height:48%; } }
 
-  /* Desktop: vertically center the hero content within the available viewport (accounting for fixed nav).
-     Scoped to large screens so mobile/responsive rules remain as-is. */
+  
   @media (min-width: 1024px) {
     .hero-section{
       min-height: calc(100vh - var(--nav-height, 64px));
@@ -503,7 +506,7 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
     .hero-grid{ align-items: center; }
   }
 
-  /* CV buttons hover (nice effect) */
+  /* CV  */
   .hero-left .btn-primary{ transition: transform 200ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms ease, background-position 400ms ease; background-size:200% 100%; }
   .hero-left .btn-primary:hover{ transform: translateY(-4px) scale(1.02); box-shadow: 0 18px 46px rgba(124,58,237,0.18); background-position:100% 50%; }
   /* ====== Tecnologias (skills) styles ====== */
@@ -594,12 +597,9 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
   .form-success{ display:flex; align-items:center; gap:8px; padding:0.9rem; border-radius:8px; background:#ecfdf5; color:#065f46 }
   .form-error{ display:flex; align-items:center; gap:8px; padding:0.9rem; border-radius:8px; background:#fff1f2; color:#7f1d1d }
 
-  /* Ensure anchor targets are not hidden under the fixed nav when navigating by hash */
   section { scroll-margin-top: calc(var(--nav-height, 64px) + 12px); }
 
-  /* Robust anchor offset: insert an invisible block before each section to prevent
-     the fixed navbar from covering the heading when jumping to an id. Works even
-     if the CSS variable isn't ready at scroll time. */
+  
   section[id]::before{
     content: '';
     display: block;
@@ -611,6 +611,7 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
   </style>
 
   <script>
+    // @ts-nocheck
     
     (function(){
       const heroEl = /** @type {any} */ (document.querySelector('.hero-section'));
@@ -651,7 +652,7 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
 
       form.addEventListener('submit', async function(e){
         e.preventDefault();
-        if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Enviando...'; }
+        if(submitBtn && submitBtn instanceof HTMLButtonElement){ submitBtn.disabled = true; submitBtn.textContent = 'Enviando...'; }
         if(successBox) successBox.classList.add('hidden');
         if(errorBox) errorBox.classList.add('hidden');
 
@@ -669,7 +670,7 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
 
         try{
           const res = await fetch(ENDPOINT, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
-          if(res.ok){ if(successBox){ successBox.classList.remove('hidden'); } form.reset(); if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar correo'; } return; }
+          if(res.ok){ if(successBox){ successBox.classList.remove('hidden'); } if(form instanceof HTMLFormElement){ form.reset(); } if(submitBtn && submitBtn instanceof HTMLButtonElement){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar correo'; } return; }
           else {
             let data = null;
             try{ data = await res.json(); }catch(_){ }
@@ -680,26 +681,25 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
           try{
             /** @type {HTMLIFrameElement | null} */
             let iframe = /** @type {HTMLIFrameElement | null} */ (document.getElementById('formsubmit-iframe-spa'));
-            if(!iframe){ iframe = document.createElement('iframe'); iframe.style.display = 'none'; iframe.name = 'formsubmit-iframe-spa'; iframe.id = 'formsubmit-iframe-spa'; document.body.appendChild(iframe); }
-            form.target = 'formsubmit-iframe-spa';
-            form.submit();
+            if(!iframe){ iframe = document.createElement('iframe'); iframe.style.display = 'none'; iframe.id = 'formsubmit-iframe-spa'; document.body.appendChild(iframe); }
+            if(form instanceof HTMLFormElement){ form.target = 'formsubmit-iframe-spa'; form.submit(); }
             if(successBox){ successBox.classList.remove('hidden'); }
-            form.reset();
-            if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar correo'; }
+            if(form instanceof HTMLFormElement){ form.reset(); }
+            if(submitBtn && submitBtn instanceof HTMLButtonElement){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar correo'; }
             return;
-          }catch(submitErr){ if(errorBox){ errorBox.textContent = 'Error al enviar (fallback): ' + (submitErr && /** @type any */ (submitErr).message ? /** @type any */ (submitErr).message : String(submitErr)); errorBox.classList.remove('hidden'); } }
-        } finally { if(submitBtn && !submitBtn.disabled){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar correo'; } }
+          }catch(submitErr){ if(errorBox){ const _err = /** @type {any} */ (submitErr); const _m = _err && _err.message ? _err.message : String(_err); errorBox.textContent = 'Error al enviar (fallback): ' + _m; errorBox.classList.remove('hidden'); } }
+        } finally { if(submitBtn && submitBtn instanceof HTMLButtonElement && !submitBtn.disabled){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar correo'; } }
       });
     })();
 
-    // Smooth scroll for nav links to anchors and mobile menu close
     (function(){
       const mobileMenu = document.getElementById('mobile-menu');
       const navToggle = document.getElementById('nav-toggle');
       const navLinks = document.querySelectorAll('.nav-right a.nav-link, #mobile-menu a.mobile-link');
 
-      /** @type {(href: string) => void} */
-      const scrollToSection = (href) => {
+ 
+  /** @type {(href: string) => void} */
+  const scrollToSection = (/** @type {string} */ href) => {
         const target = document.querySelector(href);
         if(!target) return;
         // On small screens compute an explicit top so the title is visible below the nav
@@ -752,7 +752,6 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
         });
       });
 
-      // if page loads with a hash, scroll to it (delay a bit to allow layout/styles to settle)
       if(window.location.hash){
         setTimeout(()=>{ try{ scrollToSection(window.location.hash); }catch(e){} }, 80);
       }
