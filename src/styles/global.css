@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+/* Shared icon style used across pages (copied from contactame) */
+.icon{ display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:999px; flex-shrink:0; background:#ffffff; box-shadow: 0 6px 18px rgba(2,6,23,0.06); border:1px solid rgba(15,23,42,0.04); position:relative; transition: transform 200ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms ease, background 200ms ease; cursor:pointer; }
+.icon svg, .icon img{ display:block; width:36px; height:36px; transition: transform 160ms ease, color 160ms ease; }
+.icon:focus{ outline:none; box-shadow: 0 0 0 4px rgba(79,70,229,0.12); }
+.icon:hover{ transform: translateY(-6px) scale(1.06); box-shadow: 0 24px 60px rgba(79,70,229,0.14); }
+.icon:active{ transform: translateY(-2px) scale(0.98); }
+.icon:hover svg, .icon:hover img{ transform: translateY(-2px); color: #4f46e5; }
+
+@media (max-width: 640px){
+	.icon{ width:44px; height:44px; }
+	.icon svg, .icon img{ width:28px; height:28px; }
+}
