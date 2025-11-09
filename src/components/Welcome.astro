@@ -596,6 +596,18 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
 
   /* Ensure anchor targets are not hidden under the fixed nav when navigating by hash */
   section { scroll-margin-top: calc(var(--nav-height, 64px) + 12px); }
+
+  /* Robust anchor offset: insert an invisible block before each section to prevent
+     the fixed navbar from covering the heading when jumping to an id. Works even
+     if the CSS variable isn't ready at scroll time. */
+  section[id]::before{
+    content: '';
+    display: block;
+    height: calc(var(--nav-height, 64px) + 18px);
+    margin-top: calc(-1 * (var(--nav-height, 64px) + 18px));
+    visibility: hidden;
+    pointer-events: none;
+  }
   </style>
 
   <script>
@@ -690,10 +702,28 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
       const scrollToSection = (href) => {
         const target = document.querySelector(href);
         if(!target) return;
+        // On small screens compute an explicit top so the title is visible below the nav
+        if(window.innerWidth <= 640){
+          // Prefer measuring the actual nav element height (more reliable across mobile states)
+          const navEl = document.querySelector('.site-nav');
+          const measuredNavH = navEl ? Math.ceil(navEl.getBoundingClientRect().height) : 0;
+          const cssNavH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height') || '0', 10) || 0;
+          const navH = Math.max(measuredNavH, cssNavH, 56); // fallback to a sane default
+          const rect = target.getBoundingClientRect();
+          const absoluteTop = window.scrollY + rect.top;
+          // add a slightly larger margin on mobile to ensure the heading is fully visible
+          const desiredTop = Math.max(0, Math.round(absoluteTop - navH - 18));
+          window.scrollTo({ top: desiredTop, behavior: 'smooth' });
+          // retry once after animation settles in case the nav height or layout changed
+          setTimeout(()=>{ try{ window.scrollTo({ top: desiredTop, behavior: 'auto' }); }catch(e){} }, 300);
+          return;
+        }
+
+        // On larger screens keep centering behavior
         const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height') || '64', 10) || 64;
         const rect = target.getBoundingClientRect();
         const absoluteTop = window.scrollY + rect.top;
-        // center the section title in the viewport, but ensure not to go past document bounds
+        // center the section in the viewport, but ensure not to go past document bounds
         const desired = Math.max(0, Math.round(absoluteTop - (window.innerHeight / 2) + (rect.height / 2)));
         window.scrollTo({ top: desired, behavior: 'smooth' });
       }
@@ -703,10 +733,21 @@ Desarrollado con HTML y CSS para la estructura y el diseño responsivo, JavaScri
           const href = link.getAttribute('href');
           if(href && href.startsWith('#')){
             e.preventDefault();
-            // smooth scroll and update url
-            scrollToSection(href);
-            try{ history.replaceState(null, '', href); }catch(e){}
-            if(mobileMenu && !mobileMenu.classList.contains('hidden')){ mobileMenu.classList.add('hidden'); if(navToggle) navToggle.setAttribute('aria-expanded','false'); }
+            // If mobile menu is open, close it first so layout stabilizes, then scroll
+            const doScroll = () => {
+              // smooth scroll and update url
+              scrollToSection(href);
+              try{ history.replaceState(null, '', href); }catch(e){}
+            };
+
+            if(mobileMenu && !mobileMenu.classList.contains('hidden')){
+              mobileMenu.classList.add('hidden');
+              if(navToggle) navToggle.setAttribute('aria-expanded','false');
+              // wait a bit for the menu close animation/layout to settle then scroll
+              setTimeout(doScroll, 120);
+            } else {
+              doScroll();
+            }
           }
         });
       });
